@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Toto Serve Charter v2.0</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Serve">
+<meta name="theme-color" content="#2456A6">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiVG90byBTZXJ2ZSBDaGFydGVyIiwic2hvcnRfbmFtZSI6IlNlcnZlIiwic3RhcnRfdXJsIjoiLi9zZXJ2ZV9jaGFydGVyLmh0bWwiLCJzY29wZSI6Ii4vIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI0Y2RjVGMSIsInRoZW1lX2NvbG9yIjoiIzI0NTZBNiIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFIalVsRVFWUjQydTJkUFk3c1JCU0Zhd1dzZzMyUXNZaTNDREpZQUNJblFHSUJoQzlqQSs5RnBBVGtTRVJFN01DVVpHbjBORlB0Y2R0MXovMnB6enJSZEkvYjNmNTg3N20zeXE3MjFRL2ZJblJaalo4QUFSQUNJQVJBQ0lBUUFpQUVRQWlBRUFBaEJFQUlnQkFBSVFCQ0NJQVFBQ0VBUWdDRUVBQWhBRUlBaEFBSUFSQkNBSVFBQ0FFUUFpQ0VBT2c5ZmYzVGh3Ky8vZmo5Nzc5Ky9QTlQxeDkvLzdWdDJ6Ly8vZHYvT0ZSL3FiK2h2MjEvZi8vSC9zZStFd0JhaTVnWFZvYmJONzk4OStqZiswdVAvbXVuYWtHZWxnQm9oMmFQSDhkYmYrZTd1M3AzSi8yRGRwZ0FxQUkzMittdHYvbk1icC9kWjIyU0NnTFVFODFUNS9nbEJ3MFJISjcrZ3d4NFFOSkJjZ1NnRU9xdTlreWVHaWFkdDk2bC8yVi9kZmpTNVEvcUJ3bEE0YXp4ejU4L1hqdWpaeEE1eHVzYVJ2MkFhOWp0VmdDZDdkNDJURkt2a3VEUUhwMHgxTWRiQVl6YWdnbnIxU2w4dStjaGxPZmZ1VlJTYTBuTHEvdm9YSWdyWjJMVlpZeVNGbXN0WGM2YWNzSXVPNXVKaG5vSWRMcU0xbkxsckczZWRnMkY2WWI2N1pZcm83WFZBcy85WkdSa3FKT0dvcmFPNHprbTRLbndOZ3dTY3hIUDRvcWlBM1MvekRuWmNaNFN3eTUwcUM4VWlRRGtrN1lPSE15RkNEZHhWNm5UV1F0THovUXpNVDFzekFwbTEyQUZJRFU5RnAxQW8rNWlJb1phUU11OEdXeDIwVUpqaGs1T1Yxb2RJQ042VFAyS3pBekZaS2lWcDBjUUpHUm1LQ0JEclR3OUdwc2lNMFBSR0dwQlhMUFJEOTN6eUZOejQrOXN3d21IUm9sc09CU3pLRUIyZHVIUnIyejBjVU5ZVGErTkNBeTF3dlFJQmh5bUQ1S2tZOGdaSUx2VEtUYTJMbFg5ZHZwT2twb0EyWGxNNjRrN3Z2TTlRbzJYdFhwbGwwdnlja3hrdmtWWnEyZDl2SktYWXlKek5FT3RtUFVSVjE1QktqSkhNK1FBa0drd0Z6ZjBRaDJKeTF6WVZxWm5LRzRiQm13dHVuUVhXNlhrTlR4aGRzN2ptaHN6QlZxZnlGcVp5a3RmKzhTc0I4VVZtUlFnY2ZUV05INml0WVdHZWJ3Q1FJdDQ1OVhjZEN2UStOSFh6TUU3QzhxMlVDc3dhdUhiZDQ3cHoyVGpHNDNTblpJK09rRDY4T05ZdWo5VjBoY0lRaTExOFpVbC9MZ0VJVTA1MWxJWFgxbkNqMWNRRXBSanJWajRDVlY4UlNqSGNnTmttazJHbDFlUTNzOVR2c1EwQ0ZrL1c3amxIZmtTZDNpVEhyYjE2Smd0UUpVdTVieUJNeXRBcGtPbityWkszc3JSZEhpMVpjeGYrbWtTQXZxVDNyblJNdWF2K0dNWDBVWTI4Z0ZrbXIrR3hmQ1dhaE0zSU95eVdLdVJ2OFEzWFJpZDBZeFpyS1hySDJiUFh5NVp6SzZqYUFLUWFUUXVrTDljc3BqUjRIekxaWUJxNUMrWExHWmtnMW91QXhSNTZtcnc3MkprZzB3QUVsOUdZWWZmUTBYVDRjY0ZCVWpjejlqU2JoRit2WEFBMlRuQlNnYklKYUJhK09pV3lFSEh2SFV3VVV2Q3drZlBCOGp1ak5vdEdCaXFHMlIzQlZwTVVHeUpTckJLRHRvbEtWc1VZcGtBS3ROQzlHb241Z0RJTGlRVUs4SDBYOHFpa20rcGEvalVKZGhCWGs1VXlhY0JTT3czZlFHeXN3RUFCRUFBQkVBQUJFQUFCRUFBQkVBQUJFQUFCRUFBQkVBQUJFQUFCRUFBeEZERzhrTVpES2FHL1ZJNUJsT1p6bkVUb05XbmN6Q2g3R1pJV0gxQ0dWTmF3MVlHT2FhME1xbis1aGxkZlZJOXQvV0VUY281YnV2aHhzS3dYNGRibTdtMU9WWU56OE1WUERjZXJzRGpYVEpGMDB5UGQrRUJVOUZhaUZ1dUIwenhpTHRvTFlsa2o3ampJWnZSOGxlK2gyenltTjlRK1N2ZlkzNTUwSGlvbGpwTEhieWZ4VmpxUUorL1dHekZZV094RlpaN21wOS9XZTZKQmVlQ0huYnVCZWRZOHRJOWNPWmU4cEpGZDg4MElGaDBsMlcvcnhlUExQc2RMZ2lGcmVmRmxhTWcvSWdBTXZVbFdZS1FQdndNL1ZaS2dFeDlTWllncEc5Y0dRMi9Pd0RrRW9SQ2pXem94eTQwNFVjSFVMOGFWaTdIOU1XWEp2em9BSEs1NElMMGhQVEhKaWkrSEFEU3AzelRzSGNuR09oTllSR0FUSWRYWTk1MnFQZG5wa09uemdCWi8zYmlhUkxYU25mVEN0RjY1TXNmb0tWSytxcWx1eWRBNjdqcDJ0N1pFeUQ5TkEvOVhETjlaMEdmdkR3Qk1xMlBJdHkySWI3cFF0bjRDUUdROVJuMTdVM3I2MEZ4NVJVQ0lHdEQ0TlVXMGpkK1pLTVc0UUFxZWY5aG1Uc0djd0JrR2hYMGlVeC93N0tYOVlrQ2tEVkR5b3BNWEhsRm9DY0VRTmEvc3F5MUtHNGJScUFuQ2tDbTdrVFQwQk8zRFIzTHJxQUFtVEprYld6RmhqME9QYkVBc3Z2Ukg1WFdVL0tMNmM2RDB4TU9JRHVHN0lLRXNtNlBSazlFZ093dVh3dWJJck0rUVdxdUhBRFpNVFEzV3Npc1QxaDY0Z0swTXpTOTZUZlJyOGlzVC84Und0SVRHaUNqZERBcmJHaXNqKzg0VndXQTlyTTc5N0srUCtBZ0dDVHBYem1nWlU0SmtFVTZ1N055bEdDTnB1QnBLeDlBRnFPUzF4eU1ZTGFHeTh6VUpRQ2FHNHF1b1dCcW5CTUZucXdBelhWRnp5WWp1eVVUc3ppZUlnQzlaTFQ3R0ozdkJCcjFEUHRYeUpXejZnQzBwNC83cC9CTVhERXl6djNnMCtXc1VnQjlpZEdkYUhUc2JLWWI1NzdEQXVqVUFlaCtVanRHWktKeHpwNndpZ1AwTXVId2dyRjkxS0dlMVhIdWgyVDl4RjBBbWwrc1BVWFN5VHNjbnQxbjB2SUtnRjZUZENicHZIdXl6eGpuL2tIbHVWa0xvQys5eXc3VFFRNDZTRFFIcy9IN0RuZG9hbGhqQUhxQ3ArNXErN2wvb1dydjZRMjF4N0NkbGE3K2p3c1NBMEFJZ0JBQUlRQkNDSUFRQUNFQVFnQ0VBQWdoQUVJQWhBQUlBUkJDQUlRQUNBRVFBaUNFQUFnQkVBSWdCRUFJQVJBQ0lBUkFDSUFRQUNFRVFFaXYvd0c3cVdXUXJTbnpWUUFBQUFCSlJVNUVya0pnZ2c9PSIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9wbmcifSx7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQVhRMGxFUVZSNDJ1M2RQWElkTnhhR1lhN0E2L0ErbkhrUlhJUXl6UUpVemhXb1NndFFxRXdiR0VWT0ozRHVLa2VPdklNN1BYVm5PQ3FTb2kvUlFEZHd2dWZVRzdsbVNMRi84QjZjQTZEdmZ2akh6d0NBUU81Y0FnQWdBQUFBQVFBQUNBQUFRQUFBQUFJQUFCQUFBSUFBQUFBRUFBQWdBQUFBQVFBQUNBQUFRQUFBQUFJQUFCQUFBSUFBQUFBRUFBQWdBQUFBQVFBQUNBQUFRQUFBQUFJQUFCQUFBSUFBQUlBQUFBQUVBQUFnQUFBQUFRQUFDQUFBUUFBQUFBSUFBQkFBQUlBQUFBQUVBQUFnQUFBQUFRQUFDQUFBUUFBQUFBSUFBQkFBQUlBQUFBQUVBQUFnQUFBQUFRQUFDQUFBUUFBQUFBSUFBQUp3RlFDQUFBQUFCQUFBSUFBQUFBRUFBQWdBQUVBQUFBQUNBQUFRQUFDQUFBQUFCQUFBSUFBQUFBRUFBQWdBQUVBQUFBQUNBQUFRQUFDQUFBQUFCQUFBSUFBQUFBRUFBQWdBQUVBQUFBQUNRQW8vZlhoei8rbmRqV3ovWTFjTUJBQXNNN0svL2ZMeDg3LytlZVhYMzMrNy9DOGUvbU1ERHo5ays0RVAvM0g3UlR3QkFnQU81VHJzUGgzaVg0anRmNy96Tjk3eVd4NzBjUDBYdWxNZ0FLRFBjSC9qV1A4MHRsUjkvejlqK3lGdHYvMXFCVW9BQVFBM2pmalhNczRmZi8xNTJSM2J6K24xRC91MkZ0UWMyeC8xVUQ1eXIwRUFTT2ZIWCs1MzV2Z3ZqTFo5LzZsZG5QVHMvR0M3Q0o0RUVBQ3lCdjN1UStxM28zLzNVWFg3Z1VQL3dXUUFBa0RsOHM3N3I1KzdaL3JQeHFERk9kdVBQZUFmdjEyaTdVSXBFNEVBVUNUWnZ4d1lRNGZPR3hjRjlRclRBaEFBMWh2MzMzNzVlRXl5UDY3eE83UWgzREF0MkM0cEU0QUFZTnovN2loNXpGOTY3dC9JQkNBQVRNUzU0LzY0eHU4cERlRlhtY0N6QndMQU9mejA0YzBwOVpCbm8yMzBiOTZsdGYyNlNmN3c3Ulk0a1FJRWdPTktQZSsvZmo0OUJkN2YrSDNvNk83OHY4OFEyKzNZYm9yU0VBZ0FBMVArMDBzOVQyTWIrSGFXY1pyTFI5dXZudTFxYkRmSWhBQUVnTTdkM2FsUy92M0xmaDc5T2MwN2grY3BnajM2Yy9TS1FRRG9VTzI1ekJyTm1mdXpvM2FiUzJab0NMODhQYUlCRUFBcVZIdTZqUDR2bk83WnRxNW1jZ2VvQzRFQVVHZm9IOXE1TGRBUXBnRVFBTW9PL1VOVDlSRVRDeG9BQWNEUVAxZmp0L3RSMG5NMmhHa0FCSUFLUS85aG8vTm94OUFBQ0FDRy9vTWF2dzFybWZadkw2QUJFQUJtWE55NTNOQi9Tb2UyY0VQNFdRMVlNRW9Bc0s2L1d1TjN6eSt0M1JDMmJ3QUVrTUswdTNuSEZlWDNGMlQ2N2pWYnBjN21uRkVDUUtseS83cEQvK25MY2tJYXdrK3Z1Y1lBQVdENW1zKzZxZWp4alY4TjRhZnlVeEVpQUt4YTg3bXNINU4wWXFNYXdsMjZMeUFBV09kelR1TzNlK3BkZm9ld05VSUVnQXFzdTg1bjh1Sjd3ZzdoRWFVd0VBQTBleXVNdHBrTlljMWhBb0RFLzlDWXR0NXl5bllFVXdFUUFNcXVObG1yNDVyY0VON2ZGQUVCd0ZLZmhkZGNWdnFHc0FWQ0JPQXFXT08vZk9QMzRGVlAyNjhMYndqYkswQUFPSTM3VCsrS2xYMHVxNTI3VVBJYndzMDNycTBzQmdLQVNzSi9vMjE1eVltMTliWlJiL3N6Uzk0K25XRUNnQjFlaHc2bXA2K3VhWnV5RkdzSWYxc1pVdzRpQUZqbW4xSk9DVHd1OUc4dmlJMENCQUNyZlY0eFpDemRVTFU3ek9vZ0FzQkFxbWFMZTZvb1V4blI3ckNPWGdRQm9QS2lrWko5MU9VNjJEUFh4MEFBcUZ6MHI3ZVNVak5BUzRBQTBIT2wvNlYwMU50THRjb3V0bFhtZVNBQUxWL0ZnWlgyUU1SK08weGJtQUNnNVRzMkpWeGlWdVNvT0cxaEFvRFJQelJOZGxRY0J4QUE3UEx0WFBwZjZPSWsvSTE3TG82bFFRU0F1Q3B3Vkhhc0dURGlNUUFCR1AyVi92MnhIQUFDTVBwTGlrMTNPQUFFWVBSWEZ2ZFhjd0FJd09nL1l4UTQ4S2N0SEJQRUFRU0FaMHE5T2FOLytJZFRIQlAwdHc2d1ZaZ0E1UDQxdzZjVEhSTmtIa0FBU0J6OVZ6L3IvMXdML2xENm13RWNRQUJHZjZYL2xPckhvdCs4NUFBQ2dORmYvMU1ubkFNSUFFWi9SUThGTVE0Z0FCajl1Ny9ENWZkQU9TS0NBd2dnanBCOVBUdnIzU0VMSDEyY1c2SjVEeDBJWUM2aTV1K1NYTk9qMDZ1SUlBQ2p2ekszQmdrSGdBRE9JMnI5eGpYc2VoMWFDQ3F6Ty9yMjhDMUpBbGoxc0FmdnFxWHVMNFJWb1VObENRSTRqY0JNemNtWHJ0aHNNMHNRZ0VXZjhsbHpwdHpPT1FqZ2FBSkhmd01aY1U2N3ZnQUVZTm1QVW9hcnQzeFlGRVFBbHYwVXlXSFRWclcvRU0wN0p4VE5RQUFhdit1dDBNaThWdDJibklFcnpUU0VDVURqZC9rcGVlQzFHbFRnRGl3NWFnZ1RnTk4rRm40UEZYLzZGb0lDYmVxa0lBS1lpTXdSVGZGSElXZzVYNElBN1BnOU13VlQvQmxSQ01wY1QyV0hNQUVvL1o4VFZxOFBDanNxTkFNSXdLcC9nMVJ1a092dFlXY0FBVmoxdjBieHg3WXZWM2llZEFRRXNMZjRJejhsUzNPc2RaOUpFSUFEZnd4TVJGdWhHV0JFSWdEclBpZDl6VEk3SldkVnR6TlRFNnRDQ2NDUkQyUERLdldEdzA2TEE1NVBBbkFWWkZnRE15d0wvNCtmY3BtaGdnQVVmM3ErV2s1OVdNaTdzZHRURklJSXdNcWZXWHEvVG4wNHNiSVJ1K3pLaWlBQ2NPSmJ6N0FzM2ZWUHVGd0VBQ2xWdDVUS3d2L1RaMkFtckNBQXhSODFhRDBZV1FzSXdKay9yeDkzdE1wWGIyOW1tdGdaUVFSZzRiL2VyMjV3YmkzT3RnQUNzUEJmNzlFZENiMGp0Z1VRZ042dmZOT2N6QlFXQk9CN0x5ck91ako1bDBzM21BRHMrMzExV0hOU3pNMldzWUVBdkRNREo4N09mSjVjenpheWdBQzB6aFFaRk9peXd0NWdBdEEzMDJZc0ZWcjBCMXd1QXBEK3k1VmNMbmZLSklBQXBQOFNKWmZMelRJSklBRHB2eXhKWlhuZGJvM0hHd1FnUlZKVzFyRHhoQk9BcXlBLzhnbnlzRWxBNXVHR0pnRUVJRGw2UGl3dGo1b0V4RzdhTUFrZ0FPbi80N0N1UEhBU2tMbHZ3eVNBQUtULzBuK1RBSk1BRUlEMFgvcHZFbUFTUUFDUS9rdi9UUUpNQWdoQStpLzlsLzZiQkpnRUVJQ0RQNlgvMG4rVEFFOCtBVGozWC9vdi9UY0o4UEFUZ1BSZitpOU1Ba3dDQ0tBRW1TT2E5TjhrSUh3UzRJdkJCSkE3b2puNXg2QVd2Z1N1MlpjRVlQWG4ydUhnVDRPYVZYQVg2MEVKd0hOUGxtNnVUSWdBdEg4OTlHVHAvc1pGZUNzNFdnQjZYekpFa3dDcklRaEErMWVObUN3TmF0NElBdEQrbGY2cmxhVldOakluQWNtdDRGd0JaSDRVcVcxY2tQNkhUQUl5VGQvOE9Ud0NXQmlEZ3NxQXlnYlpYNE1BN1A0MTFYMmUrMC92aktjcnhuYmpsRWFIbGtZSndQTC9aY0xxUUhmY0hlOStyUWpBOHYvS09ZN1ZuNEZ6dnN6NWNlYUdnRHYxSDFWT0ZlR3EwZHoxa1NFUmdQcVBnZUJuWXlqeHF3SVJnUHBQWWlsQSs3ZEFhQVdyQWhGQWRQM0hDWkhKNGVSWFZTQUNpQjdVN1A0TkQ3dUNWWUVJSUhkUTgvNkhod3hBRllnQVFvdmFLZ0JDRFhCMHk0UUFuUDlUNm9HMi9MOVlXQVZ3WTZTZEM1UWxnTUEzM3lwQWNiRU9lUHdyUXdEcVAzWFNHZlVmVlNDVFpnTHcvUy8xSDZFS1pMWkVBQmFBcXY4SVZhQ0FpRm9NbWlLQXdEVnQ2ajlDRmFndGNoYUQzbWtBcVArby82Z0NlWGN5MndBcEFnak1ZdFIvaENyUXdiTm5BcGlVdExLR2o0RUlUOFh4NVRJQzBBQ1lJdXorRngycjI0SG5nb1MwQWU0MEFEeSt6ditSR2NnTU10c0FkeG9BSnJESm5STFZiVVhVNURaQWhBRFNLcGg2ZmVLRnNEcGdhTCtFQUJ3QnRPVHMxUUxRa0xBWWRLZ3BDVUFEUUlvblRCQzFBUWpBTnlEWG1icGFBT29KOFlSOEd3bGZpTHpUQVpiZmFRQ1lJNW9qUG8yRVBuQjlBYVN0WG1pYnR3WVd5cExEUTNKTEpHd0h1OU1CbHR4cEFHZ0RlSnM2dmswRW9BTzhXSG5YRGdERkRXMkFYbE1sQWlDQXhWNXNZNkxjVnFKQUFEckFpYytySFFDQllUZkEwSXlLQU93QlBpSGFqZ0RTQVE2TXRsd2g3VkNnOHZ1QjczU0F6ZXMxQUxRQnZGTjkzeWtDSUlCbFhtbGJ3QUxEZWdFQ0tDNkF0TXFHdFgzaWdLRXRiY1Z3N1Q0d0FhUS9xVHJBc2FFUFRBQ1ZCWkEyVi9VK0N4bkRQSlZWQWlBQU0zcWhaa2dBQkdBTjZPRHdGVEJ4Mk5BV2RiNVc3WldnbFFYZ1pmWXlDMG5EV1hOckFpQUEwM21oYkVnQUJIQTRhYTBxRFQzUkVCWU9qTHRLQkdBTjZPd0NzQVFvUER3MjQ2NFNBUkRBY2VFVUlISFkwSloySWhBQitCUnd6VEtsSlVEaDRVU2dXNkx3eDRITENzQkNCVmRKRU1DNVY0a0FDR0RxQjVRQUNNQ1RRd0FFSUk4VG9lSDlJZ0RiZ0FsQUVBQUJQQitGTndPWEZVRFVPOXpjcERMOENZc3N4bDBsQWlDQUk4SXVNTkVjOW9JUkFBRWtDc0FtQU9IaElRQUM4QTRMQXZEd0VBQUJlSWNGQVhoNENNQkpjT1dmVGdJUWx4M25IRVJkcGFybndkVVVnUFRFVlJJRU1NTlZJZ0FDbUZRQXRnR0xpMDBrQkVBQUJDQUlnQUFJZ0FBSVFCQUFBUkFBQVJDQUlBQUNJQUFDSUFCQkFBUkFBQVJBQUlJQUNJQUFDSUFBQkFFUUFBRVFBQUVJQWlBQUFpQUFBaEFFUUFBRVFBQUVJQWlBQUFpQUFBaEFFQUFCRUFBQkVJQWdBQUlnQUFJNFZRQU9neE1YaDhFUmdPT2dDVUFRQUFHOEVJNkQ5a0dZYXU4d0FRZ1B6OUFjaXdBSXdEc3NQRHdFUUFBRTRCMFdIaDRDSUFBQ21PRWRUdXVVaUk3VmJRSWdBQUtZSmQ1KytlZ3FpU09IdHUyUmM1VUlZRjUrL2YyM25LZlRVbTV4OE5BV3RZbGtHMHdJWURHaUhsQUNFQVF3NGZ0RkFBUXc5UU5xTTNCNGVISUlnQURrY1lJQXpCMEpvQkNhVkFRZ0NLQkxOQyt5SUFESEFSMFVQLzV5N3lxSjEwYmJBdUx0WVhPVkNJQUFsbjlHQ1lBQVBEWUU0RHk0MEdmVVhyRHdzQXRzM0ZVaUFIdkJqb3YzWHorN1N1SzEwZmJNYkErYnEwUUFCREJSTkhmei92anJUK05nWm15MzN0b0JBaWo3dDBWdEJ2WXlDMG5EaUNpOERiaTRBT1FwcHZOQzJmQXNUUklBQVJ3YUducmlWV0hoQUFGVUZvREZhdDVuSVdNNDViVWlBQUl3b3hkcWhnUkFBQllDelQxWGplcVdpMnMwOXphMTFnaUFBRW85ckJZQ0JZWlRnQWlndmdEU2Nsc25Bb21obFkyMFU0QnFyd0d0TDRDMDNGWWZXTndZT3NCRDUwa0VvQTlzWGk5VUN4TXpLZ0lnZ01WbXJOb0FFZ1UxVlFMUUJ3N043T3dIamdvcmhvZStUUVF3RVdtSG5UbmhYWGhJdWtUeitWb0VvQThzdVJPbWlhR0ZNZ0x3Y2VEMTJnQzJnM2xDUENIZlJ1RlBBUWNKSUxDNEliOFQ1b2huRmNvSVFCOTR5UWZYYm9DUXNBTmdhQ0pGQVBZRFMvR0VDV0pvb1l3QTlJRlBEbDhIRTk4TFh3RWJmYUVJUUJ2Zy9HZzdGQ2l0WVI0WWJZM050Q09BUWhvQUtRSUlmSHk5NTBKbWNQeUZJZ0Rid2RhdVlGb002cW53VkNSc0Fjc1NRR0IxVzY5UFBBcXJBelFBUWdVUTJBYXdHRlE4Q2d0QU5RQkNCUkJZM2JiZVEzUXBhd1RPbmtNYUFFRUN5S3h1cXdJSjlaL0RPaVVFTURXQjQ1b3FrRkQvT2N5VUJLQU5vQW9rMUg4MEFBakFvVUNxUUVMOUorYVZJUUNMUVZXQmhQcFA2S1NaQUZTQlNuVzBWSUhVZndMWFRVVFZmK0lFa0huVWdkMy80ZUZja05FdkN3RllET3I5RnpLQTBPa3lBZmhDcEFxQVVBTk1USlVJUUJWbzl0QURqQTJyQU5SL0NDQTlzYlVLTURhc0ExYi9JUUR0VFFOQlloQy8rZzhCcUFLMVA5ODJCQVNXL2pJenBNRDZUNmdBTXF0QVBnYmlqcnZqNmo4RWtKdmphQVZIaGZhditnOEJxSEoycUFqYkZieGNOSy85emV6NnhBNkR1UUlJUEJlb3VkQ3BGUndpKzh6MldOcjVQd1JncW10Y1lIcWwwVjJsVVFKWW5zREtoc3FBOU44YjBlV05JQURmQ0F1YUJGZ1BXajZselV6L283Ny9SUUFxRzFZSHVyL3U3OTVhR1FIWUVCQ1hJWm9FdUxsa1NRQmF3Ym5QdmZXZ1ZTdmFNaUVDMEFyMjZDc1RhL0NRSlFIWUZhejN4WmN4STVyVkVBU2dGYXo5eFplSkk1cm5ud0RTeWN5QVRBS2sveDUrQW5BVkpFRW1BZEovVHo0QldBOHFEeklKa1A1WEQ2cy9DY0JDQ0pNQTZYOW8rbS8xSndHWUJKZ0VTUCtsL3dUZ0twZ0VtQVJJLzZYL0JBQ1RBSk1BNmIvMG53Qk1Ba3dDVEFLay85Si9BakFKQ0lqbWp5S1pCS3lZL21kK0RrLzZUd0FtQVoyVEk1T0E1ZEovVHpnSXdDU2dXMzVrRXJCVyt1L3hCZ0ZJa2JxbFNMNFQ0R1pKL3duQUpDQTNTL0t4TUhkSytrOEFKZ0hLeWtMRFJ2cFBBQ1lCWVpYbHpIWGxwNFI5RzlKL0FuQkU2RnlUZ05qTGRYell0SEhBNVNJQTVHYTFiZStNU2NDMDZYK3NucDM3VHdDN0pnR1pzMlpGQmdXNkdwZEwrazhBdTlBM2M3bFdyODVaMFFBQ2FFZnJUUFBjSGNtWkxSRUFKRkR5VFhPeXhNdEZBSEI0bG9xenJzemEwWHk0SVFIQUlvcTk0MDVzODN5MlpxWmxiQ0FBM2VBVDNpWGQ0Tk5yY1RheWdBRHNEZFo3ZFAxZExoQ0FRcEJ1c042dkNTc0l3TjVnTldnOUdKY0xCR0JaeGRoWFN6ZDRqM2VsS1FkY0xnS0F5c2FvV3NUOXAzZUc4cmJZTHAzbmMvVHpTUUN1Z2d4cmJJYVZ1WXRpWnpTdlpEZERCUUVvQkUzVURYWlM5R0hOek16ZXIrSVBBVmdSWkdBaVdzOGtDTURXc0pGaFdib3JYRUNXSUFCbkJNbFB6YkZDT3lVZ0FGK01NVWlSNjlxbGY4VWZBamlaekdXT3pXVUsyd0pHTkRNeml6OXR5MlJCQUZhRm52YjZPUi9paGJEVDR2YXc3cE1BbkJPMzVBVGMrUkFkUjdUTUlxUVQzd2hBTTJEaEZweENVSy9pVCtBeUJLVi9BbkJFaEVLUTRrOW84Y2VSRHdSZ1o4QkVvUkIwVnZFbjhGcFo5VThBZGdZVUtjamFHdWJxSFZOeUJBRTRKbWk2dk16V3NJc2RGZVBiSkNBQURXRURHWEZxL0lJQU5JU1ZNbHd4alY4UWdCM0M4bGx6cHZuRGpsOENzQ2lvY3FZV0tFdkxaNGRtRlNBQWk0Slc2dFJGWFNnYjZFWmZLQkFBQjV3VGpqUVkxTTlNMnpsaDlDY0FKd1VGMVRkQ0NrRXV6dEFPT1FqQXdsQkpydWxSNHZNREF1QUFaVzRORXFNL0NJQURGbHkvVVhoVnFIV2ZSbjhDNElBZ0I3Uzl6Q1hyM1cybC82aE5Fa1ovQXVBQVJZK0NSUThGTWFNL0FTRFJBVzFqWDZWTDFEeTA1WlQramY0RUVIZFFSSTREd25lOTJoMzl0Nk8vd3g0SXdEeEFNNkJnLzFNblhPNVBBRWgzUU9iSmw4NzdOUG9UQURqZ1A1RzJCOHB1T0tNL0FZQUQ5allERnEyR08vTEI2RThBNElERXBOaVJEMFovQXNEclh2NkV5bTlDV1Z6cC8rV0xZL1FuQU9RdS9hNmRIU3Y5dnhCT2VDWUFjRURsK3JqU3Y5R2ZBTENMOHVkL1ZVMlRsZjYvRjc3c1NBQ1FFbllvbEU4N1Eyck9jTXVYL20zMEpRQzBuSVZRT3pHc2RFeVFBMysrZDFuYVRzSUFBYUIrY2FETU1VRU8vT2tvUlJBQVVwTEVBc2NFT2ZCSHk1Y0FvQzNjbUNjdTdVVm4vV3Y1RWdDMEJCS2JBVXIvaXY0RUFMdUZ6MmtHbkY1RjhjM0xSeXU3RlAwSkFHT3B1bVYwdVQ1cStJZHVIa1hiSGdnUUFGcEd2WHJsb0xYS0tUNTErZTJOczlLZkFIQjBPYWhlSFhtVnZWVDFkckh0dVdYS1BnUUFxNFBPckNRY21Wazc3czFxSHdLQXpXSnoxZFlQYXdZNDd1MWlreGNCUUdkNHR0VTFCOHlIN1BuUzd5VUEyQ2d3UE1HY3NNaHV6NWRsL2dRQVU0R3BHOEtEUnR2VmR5eEwvRUVBOW92Vjd6R09hSW8wbDd4cmRPbnQ4Q0lBV0NDVTJ4Qk9idnhhNmtNQXNGZGdzZFVtSFV0aHNkLzVzc2FmQUtBNUhOMFF6bXo4YXZZU0FLcFZoTllka3M0NmR5SHdzTS90VDFieklRRFVyQWl0dTBib2xBWDRhWTNmN2ZGUTh5RUFXQ09rSVp6VitMWE9od0NRMVJoWVRnTkhOb1J6R3IvYlk2RGNUd0NnQVEzaHJNYXZvUjhFZ01VME1IcDBUdGp4YStnSEFXQlZEWXpiSVZ4K3g2K2hId1NBNVRVd3FFTmJ1UEZyNkFjQm9JZ0dScVRxOHh3OVpPZ0hBY0MrZ2VOMmFaWDh4cTkxL1NBQTdOWEF0THVJZXpXRWl6VityN3Q1RGYwZ0FCU3ZDKzFmc0YvcEc3K3FQU0FBREs4TFRUVWgyTm01TGRENDNXNkhhZzhJQUlkT0NPWXBnTFNOZmRzZzNqYjZ6L09OMyswV1NQbEJBRGlOdDE4K25sNGFhaTdqTE5yNDNTNjRNenRCQUppclYzeWlDYlpmZmN4ZmV1N2ZxTHNMQWdBVDlGd1VOUG15SCtNK0NBRHJtZUQrMDd1RFI4eTJtdjZjamQvdDBtMi8wYmdQQXNEYWJBUForNitmajVrV0RHcUtiai8ybUdSL3UxQkROUVlRQUU2ZUZvenJvNDVvQ0E5dC9HNC9XYklQQWtDb0RMclBESnAzOW42UDdxUC85aWNiOUVFQXdQL0xSRysvZk93MU9lallFTzdTeHJpbStkc2ZxTHdEQWdCdTJxVzFaMzdRWmFWODgwSC9Eem0rRVI4RUFIUlR3dTFXMkRuNDNyanM1enJXRys1QkFNQ2gvUFRoelhYWXZaYVBudXJoNFQ4MjhIU0lmeWpqYkRpREFRUUFyT1NKV3pDeWd3QUFBQVFBQUNBQUFBQUJBQUFJQUFCQUFBQUFBZ0FBRUFBQWdBQUFBQVFBQUNBQUFBQUJBQUFJQUFCQUFBQUFBZ0FBRUFBQWdBQUFBQVFBQUNBQUFBQUJBQUFJQUFCQUFBQkFBQUFBQWdBQUVBQUFnQUFBQUFRQUFDQUFBQUFCQUFBSUFBQkFBQUFBQWdBQUVBQUFnQUFBQUFRQUFDQUFBQUFCQUFBSUFBQkFBQUFBQWdBQUVBQUFnQUFBQUFRQUFDQUFBQUFCQUFBQkFBQUlBQUJBQUFBQUFnQUFFQUFBZ0FBQUFBUUFBQ0FBQUFBQkFBQUlBQUJBQUFBQUFnQUFFQUFBZ0FBQUFBUUFBQ0FBQUFBQkFBQUlBQUJBQUFBQUFnQUFFQUFBZ0FBQUFBUUFBQVRnRWdBQUFRQUFDQUFBVUoxL0E1djFMM0poUUpqQUFBQUFBRWxGVGtTdVFtQ0MiLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<!--
+  Toto Serve Charter -- serve_charter_v2 (single file, offline, one-handed)
+  Rebuilt 2026-10-08 (Task 6) as the double-fault-kill session tool:
+    Block A consequence serving (2nd serves only; ladder / one-serve game /
+      cone target drills)
+    Block B match simulation (1st+2nd in natural sequence, games from deuce)
+    Block C fatigue serving (2nd serves only, after sprints)
+  v1.1 (2026-09-24 landing-proxy instrument) is preserved as LegacyCore so the
+  historical session + any legacy saved session still load and export.
+  CONTRACT (FROZEN for engine log-serve, Task 7):
+    CSV columns, exactly:
+      date,block,drill,second_serves,double_faults,first_serves,
+      first_serves_in,kick_second_serves,kick_double_faults,
+      slice_second_serves,slice_double_faults,after_fault_second_serves,
+      after_fault_double_faults,routine_total,routine_done,notes
+    Plus a copyable '# key=value ...' footer block, same convention as the
+    match charter. No prompt/alert/confirm, no clipboard API, no network.
+  ONE TAP PER REP. Every optional capture has a zero-tap default:
+    serve type pre-selected KICK; target chip offered only when a target
+    drill is active; routine counted as DONE unless the skip flag is tapped.
+-->
+<style>
+  :root{--chalk:#F6F5F1;--ink:#14213D;--court:#2456A6;--line:#D9D6CC;--ok:#0E7A4A;
+    --fault:#C97B12;--bad:#B3372F;--muted:#8A8778;--lit:#FFD34D;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;}
+  html,body{margin:0;padding:0;background:var(--chalk);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overscroll-behavior:none;}
+  #app{max-width:520px;margin:0 auto;padding:10px 12px 40px;}
+  .hide{display:none!important;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;}
+  .card h2{margin:0 0 4px;font-size:17px;} .card p{margin:0 0 8px;font-size:13px;color:var(--muted);}
+  label.l{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 5px;}
+  input.t,textarea.t{width:100%;border:2px solid var(--line);border-radius:10px;padding:10px;font-size:16px;user-select:text;-webkit-user-select:text;font-family:inherit;}
+  textarea.t{min-height:200px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;white-space:pre;}
+  .seg{display:flex;flex-wrap:wrap;gap:6px;}
+  .seg button{flex:1 1 auto;border:2px solid var(--line);background:#fff;border-radius:10px;min-height:44px;font-size:14px;font-weight:700;color:var(--ink);padding:0 10px;}
+  .seg button.on{border-color:var(--court);background:var(--court);color:#fff;}
+  .board{background:var(--court);color:#fff;border-radius:14px;padding:10px 14px;margin-bottom:8px;}
+  .board .evt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;display:flex;justify-content:space-between;}
+  .board .cue{font-size:16px;font-weight:800;margin-top:4px;}
+  .board .cnt{font-size:13px;margin-top:4px;opacity:.9;font-variant-numeric:tabular-nums;}
+  .ladderbox{background:var(--lit);color:var(--ink);border-radius:14px;padding:8px 14px;margin-bottom:8px;text-align:center;}
+  .ladderbox b{font-size:34px;font-variant-numeric:tabular-nums;}
+  .ladderbox span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px;}
+  .kpi div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 3px;text-align:center;}
+  .kpi b{display:block;font-size:18px;font-variant-numeric:tabular-nums;}
+  .kpi span{font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+  .kpi .good b{color:var(--ok);} .kpi .bad b{color:var(--bad);}
+  .ask{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 2px 6px;font-weight:700;}
+  .grid{display:grid;gap:8px;grid-template-columns:1fr 1fr;}
+  button.big{border:none;border-radius:13px;min-height:72px;font-size:20px;font-weight:800;color:#fff;background:var(--court);}
+  button.big.ok{background:var(--ok);} button.big.fault{background:var(--fault);} button.big.bad{background:var(--bad);}
+  button.big:active{transform:translateY(2px);}
+  button.flat{border:2px solid var(--line);background:#fff;border-radius:10px;min-height:44px;font-size:14px;font-weight:700;color:var(--ink);padding:0 10px;}
+  button.flag{border:2px dashed var(--fault);background:#fff;border-radius:10px;min-height:40px;font-size:13px;font-weight:800;color:var(--fault);}
+  button.flag.on{background:var(--fault);color:#fff;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .chips button{flex:1 1 30%;border:2px solid var(--line);background:#fff;border-radius:22px;min-height:40px;font-size:13px;font-weight:800;color:var(--ink);}
+  .chips button.on{background:var(--lit);border-color:#C9A21F;}
+  table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums;}
+  th,td{padding:6px 4px;text-align:center;border-bottom:1px solid var(--line);}
+  th{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+  td:first-child,th:first-child{text-align:left;}
+  .row{display:flex;gap:8px;margin-top:8px;} .row button{flex:1;}
+  .note{font-size:12px;color:var(--muted);margin-top:6px;}
+  .msg{font-size:12px;color:var(--bad);font-weight:700;margin-top:6px;min-height:14px;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- SETUP -->
+  <div id="setup" class="card">
+    <h2>Serve session</h2>
+    <p>Double-fault kill. One tap per rep; everything optional defaults to done.</p>
+    <label class="l">Date</label><input class="t" id="inDate">
+    <label class="l">Block</label>
+    <div class="seg" id="block">
+      <button data-v="A" class="on">A · consequence</button>
+      <button data-v="B">B · match sim</button>
+      <button data-v="C">C · fatigue</button>
+    </div>
+    <div id="drillWrap">
+      <label class="l">Drill (Block A)</label>
+      <div class="seg" id="drill">
+        <button data-v="ladder" class="on">10-in-a-row ladder</button>
+        <button data-v="oneserve">one-serve game</button>
+        <button data-v="cone">cone target</button>
+      </div>
+    </div>
+    <label class="l">Target note (optional)</label>
+    <input class="t" id="inTarget" placeholder="e.g. kick to ad court">
+    <div class="row"><button class="big" id="start">START SESSION</button></div>
+    <div class="msg" id="setupMsg"></div>
+  </div>
+
+  <!-- LEGACY SAVE -->
+  <div id="legacy" class="card hide">
+    <h2>Legacy session found</h2>
+    <p>A 2026-09-24-format serve session is saved on this device. Export it
+       before starting a new one — the new tool uses a different format.</p>
+    <div class="row"><button class="big" id="legExport">EXPORT LEGACY TEXT</button></div>
+    <div class="row"><button class="flat" id="legDiscard">discard legacy save</button></div>
+    <textarea class="t hide" id="legOut" readonly></textarea>
+  </div>
+
+  <!-- LIVE -->
+  <div id="live" class="hide">
+    <div class="board">
+      <div class="evt"><span id="blkName">BLOCK A</span><span id="repNo">rep 0</span></div>
+      <div class="cue" id="cue">second serve</div>
+      <div class="cnt" id="liveCnt">second serves: 0 · DF 0</div>
+    </div>
+
+    <div id="ladderBox" class="ladderbox hide">
+      <b id="kStreak">0</b><span>ladder streak (resets on DF)</span>
+    </div>
+
+    <div class="kpi">
+      <div><b id="k2nd">0</b><span>2nd serves</span></div>
+      <div class="good"><b id="kIn">–</b><span>2nd in %</span></div>
+      <div class="bad"><b id="kDF">–</b><span>DF %</span></div>
+      <div class="bad"><b id="kRush">–</b><span id="kRushLbl">after-fault DF</span></div>
+    </div>
+
+    <div class="ask" id="askFirst">first serve</div>
+    <div class="grid" id="firstRow">
+      <button class="big ok" id="b1stIn">FIRST IN</button>
+      <button class="big fault" id="b1stF">FIRST FAULT</button>
+    </div>
+
+    <div class="ask hide" id="askSecond">second serve</div>
+    <div class="grid hide" id="secondRow">
+      <button class="big ok" id="b2ndIn">SECOND IN</button>
+      <button class="big bad" id="b2ndDF">DOUBLE FAULT</button>
+    </div>
+
+    <div class="chips">
+      <button id="typeKick" class="on">KICK</button>
+      <button id="typeSlice">SLICE</button>
+      <button id="targetHit" class="hide">TARGET HIT</button>
+      <button id="routineSkip">ROUTINE SKIPPED</button>
+    </div>
+
+    <div class="row">
+      <button class="flat" id="undo">UNDO</button>
+      <button class="flat" id="toSum">SUMMARY</button>
+    </div>
+    <div class="msg" id="liveMsg"></div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div id="sum" class="hide">
+    <div class="card">
+      <h2>Session summary</h2>
+      <p id="sumSub"></p>
+      <table>
+        <tbody id="sumTbl"></tbody>
+      </table>
+      <div class="note" id="takeaway" style="font-size:14px;font-weight:700;color:var(--ink)"></div>
+      <label class="l">Notes</label>
+      <input class="t" id="inNotes" placeholder="e.g. wind, racket, who fed">
+      <div class="row">
+        <button class="big" id="dl">EXPORT CSV</button>
+      </div>
+      <div class="row">
+        <button class="flat" id="backLive">RESUME</button>
+        <button class="flat" id="endBtn">END SESSION</button>
+      </div>
+      <div class="msg" id="sumMsg"></div>
+      <label class="l">Copyable footer block</label>
+      <textarea class="t" id="footOut" readonly></textarea>
+      <div class="row"><button class="flat" id="selFoot">SELECT ALL</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* =======================================================================
+   ServeCore v2 -- pure state machine. No DOM. Tested headless under QuickJS.
+   ======================================================================= */
+var ServeCore = (function () {
+  var VERSION = "serve_charter_v2";
+  var KEY = "toto_serve_charter_v2";
+  var LEGACY_KEY = "serve_block_v1";
+
+  function today() {
+    var d = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
+    return d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate());
+  }
+
+  function newSession(meta) {
+    var S = { v: 2, date: today(), block: "A", drill: "ladder", targetNote: "",
+              serveType: "kick", targetActive: false, need2: false,
+              rows: [], notes: "", ended: false };
+    for (var k in (meta || {})) S[k] = meta[k];
+    return S;
+  }
+
+  function targetDrillActive(S) {
+    return S.drill === "cone" || (S.targetNote || "").trim() !== "";
+  }
+
+  function stamp() {
+    var d = new Date();
+    return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) +
+           ":" + ("0" + d.getSeconds()).slice(-2);
+  }
+
+  function mkRow(S, kind, result) {
+    return { n: S.rows.length + 1, kind: kind, result: result,
+             type: kind === "2nd" ? S.serveType : "",
+             targetHit: null, routineSkipped: 0,
+             afterFault: 0, ladder: 0, t: stamp() };
+  }
+
+  // Block B only: first serve. 'IN' or 'F'. A fault opens the second serve.
+  function serve1(S, result) {
+    if (S.block !== "B") throw new Error("first serves exist only in Block B");
+    if (S.need2) throw new Error("second serve is due");
+    var r = mkRow(S, "1st", result === "IN" ? "IN" : "F");
+    S.rows.push(r);
+    S.need2 = (r.result === "F");
+    return r;
+  }
+
+  // Second serve everywhere. 'IN' or 'DF'. afterFault marks the rushed
+  // Block-B second serve (the deployment-under-pressure indicator).
+  function serve2(S, result) {
+    if (S.block === "B" && !S.need2)
+      throw new Error("Block B: a first serve is due, not a second");
+    var r = mkRow(S, "2nd", result === "IN" ? "IN" : "DF");
+    r.afterFault = (S.block === "B" && S.need2) ? 1 : 0;
+    if (S.drill === "ladder" && S.block !== "B") r.ladder = 1;
+    S.rows.push(r);
+    S.need2 = false;
+    return r;
+  }
+
+  function lastRow(S) { return S.rows[S.rows.length - 1] || null; }
+
+  function setType(S, t) {
+    if (t !== "kick" && t !== "slice") throw new Error("type must be kick|slice");
+    S.serveType = t;
+    var r = lastRow(S);
+    if (r && r.kind === "2nd" && !r.lockedType) r.type = t;  // correct a mistype on the open row
+  }
+
+  function toggleTargetHit(S) {          // one tap on the open row; no tap = not offered
+    var r = lastRow(S);
+    if (!r || !targetDrillActive(S)) return null;
+    r.targetHit = r.targetHit ? 0 : 1;
+    return r;
+  }
+
+  function skipRoutine(S) {              // default is done; this flag costs one tap when violated
+    var r = lastRow(S);
+    if (!r) return null;
+    r.routineSkipped = r.routineSkipped ? 0 : 1;
+    return r;
+  }
+
+  function undo(S) {
+    var r = S.rows.pop();
+    S.need2 = !!(lastRow(S) && lastRow(S).kind === "1st" &&
+                 lastRow(S).result === "F");
+    return r;
+  }
+
+  function ladderCalc(rows) {            // streak over ladder rows only, in order
+    var cur = 0, best = 0;
+    rows.forEach(function (r) {
+      if (!r.ladder) return;
+      if (r.result === "DF") { cur = 0; } else { cur += 1; best = Math.max(best, cur); }
+    });
+    return { cur: cur, best: best };
+  }
+
+  function stats(S) {
+    var snd = S.rows.filter(function (r) { return r.kind === "2nd"; });
+    var df = snd.filter(function (r) { return r.result === "DF"; });
+    var k2 = snd.filter(function (r) { return r.type === "kick"; });
+    var s2 = snd.filter(function (r) { return r.type === "slice"; });
+    var af = snd.filter(function (r) { return r.afterFault; });
+    var fst = S.rows.filter(function (r) { return r.kind === "1st"; });
+    var skipped = S.rows.filter(function (r) { return r.routineSkipped; }).length;
+    return {
+      second: snd.length, df: df.length, second_in: snd.length - df.length,
+      kick2: k2.length, kickDF: k2.filter(function (r) { return r.result === "DF"; }).length,
+      slice2: s2.length, sliceDF: s2.filter(function (r) { return r.result === "DF"; }).length,
+      af2: af.length, afDF: af.filter(function (r) { return r.result === "DF"; }).length,
+      first: fst.length, first_in: fst.filter(function (r) { return r.result === "IN"; }).length,
+      routine_total: S.rows.length, routine_done: S.rows.length - skipped,
+      ladder: ladderCalc(S.rows),
+      target_hits: S.rows.filter(function (r) { return r.targetHit; }).length,
+      target_offered: S.rows.filter(function (r) { return r.targetHit !== null; }).length
+    };
+  }
+
+  function pct(a, b) { return b ? Math.round(100 * a / b) + "%" : "-"; }  // ASCII dash: Task 7 parses this
+
+  function takeaway(S) {
+    var st = stats(S);
+    if (st.second >= 10) {
+      var tail = S.rows.filter(function (r) { return r.kind === "2nd"; }).slice(-10);
+      if (!tail.some(function (r) { return r.result === "DF"; }))
+        return "DF-free final 10 second serves.";
+    }
+    if (st.afDF > 0 && st.afDF === st.df && st.df >= 2)
+      return "All " + st.df + " DFs came right after faults — slow down before the second serve.";
+    if (S.drill === "ladder" && S.block !== "B")
+      return "Ladder best streak " + st.ladder.best + " (auto-resets on DF).";
+    return "Second-serve DF rate " + pct(st.df, st.second) +
+           " (n=" + st.second + ").";
+  }
+
+  // FROZEN schema (Task 7 engine log-serve consumes exactly this header).
+  var CSV_HEADER = ["date", "block", "drill", "second_serves", "double_faults",
+    "first_serves", "first_serves_in", "kick_second_serves", "kick_double_faults",
+    "slice_second_serves", "slice_double_faults", "after_fault_second_serves",
+    "after_fault_double_faults", "routine_total", "routine_done", "notes"];
+
+  function esc(v) { return String(v == null ? "" : v).replace(/[\r\n]+/g, " ").replace(/,/g, ";").replace(/"/g, "'"); }
+
+  function exportCSV(S) {
+    var st = stats(S);
+    var vals = [S.date, S.block, S.block === "A" ? S.drill : "-",
+      st.second, st.df, st.first, st.first_in,
+      st.kick2, st.kickDF, st.slice2, st.sliceDF,
+      st.af2, st.afDF, st.routine_total, st.routine_done, '"' + esc(S.notes) + '"'];
+    return CSV_HEADER.join(",") + "\n" + vals.join(",") + "\n" + exportFooter(S);
+  }
+
+  function q(s) { return '"' + String(s || "").replace(/"/g, "'").replace(/\r?\n/g, " / ") + '"'; }
+
+  function exportFooter(S) {
+    var st = stats(S);
+    return "# schema=" + VERSION + " date=" + S.date + " block=" + S.block +
+      " drill=" + (S.block === "A" ? S.drill : "na") +
+      " target_note=" + q(S.targetNote) +
+      " second_serves=" + st.second + " double_faults=" + st.df +
+      " second_in_pct=" + pct(st.second_in, st.second) +
+      " df_pct=" + pct(st.df, st.second) +
+      " kick_df=" + st.kickDF + "/" + st.kick2 +
+      " slice_df=" + st.sliceDF + "/" + st.slice2 +
+      " after_fault_df=" + st.afDF + "/" + st.af2 +
+      " first_serve_in_pct=" + pct(st.first_in, st.first) +
+      " ladder_best=" + st.ladder.best + " ladder_cur=" + st.ladder.cur +
+      " routine_done=" + st.routine_done + "/" + st.routine_total +
+      " target_hits=" + st.target_hits +
+      " takeaway=" + q(takeaway(S)) + " notes=" + q(S.notes);
+  }
+
+  function save(S) { return JSON.stringify(S); }
+  function restore(json) {
+    var o = JSON.parse(json);
+    if (!o || !Array.isArray(o.rows)) throw new Error("not a serve session save");
+    var S = newSession(o);
+    S.need2 = !!(lastRow(S) && lastRow(S).kind === "1st" && lastRow(S).result === "F");
+    return S;
+  }
+  function isLegacySave(json) {   // v1.1 shape: rows with .out/.inside, no .v
+    try {
+      var o = JSON.parse(json);
+      return !!(o && Array.isArray(o.rows) && o.rows.length &&
+                o.rows[0].out !== undefined && o.v === undefined);
+    } catch (e) { return false; }
+  }
+
+  return { VERSION: VERSION, KEY: KEY, LEGACY_KEY: LEGACY_KEY, newSession: newSession,
+           today: today, targetDrillActive: targetDrillActive,
+           serve1: serve1, serve2: serve2, setType: setType,
+           toggleTargetHit: toggleTargetHit, skipRoutine: skipRoutine,
+           undo: undo, stats: stats, ladderCalc: ladderCalc,
+           takeaway: takeaway, exportCSV: exportCSV, exportFooter: exportFooter,
+           CSV_HEADER: CSV_HEADER, save: save, restore: restore,
+           isLegacySave: isLegacySave };
+})();
+
+/* =======================================================================
+   LegacyCore -- the 2026-09-24 v1.1 state machine, kept verbatim so the
+   historical session replays and legacy device saves still export.
+   ======================================================================= */
+var LegacyCore = (function(){
+  function newSession(meta){
+    var S = {date:'', racket:'ezone_leather_grip', tape:'40', b1:'0', block:'2', s12:'1', type:'flat', target:'-',
+             rows:[], words:'', opnote:''};
+    for (var k in (meta||{})) S[k] = meta[k];
+    return S;
+  }
+  function serve(S, inside, out, t){
+    var r = {n:S.rows.length+1, block:S.block, s12:S.s12, type:S.type, inside:inside||'?', out:out,
+             target:(S.block==='3'?S.target:'-'), pe:'-', reset:'-', t:t||''};
+    S.rows.push(r);
+    var fault = out !== 'IN';
+    if (S.block === '4'){ S.s12 = (fault && r.s12 === '1') ? '2' : '1'; }
+    else { S.s12 = '1'; }
+    if (S.block === '3'){ S.target = '-'; }
+    return r;
+  }
+  function pointEnd(S, pe){
+    for (var i = S.rows.length-1; i >= 0; i--){ var r = S.rows[i];
+      if (r.block === '4' && r.out === 'IN' && r.pe === '-'){ r.pe = pe; return r; } }
+    return null;
+  }
+  function openFault(S){
+    for (var i = S.rows.length-1; i >= 0; i--){ var r = S.rows[i];
+      if (r.block === '4' && r.out !== 'IN' && r.reset === '-') return r; }
+    return null;
+  }
+  function openPoint(S){
+    for (var i = S.rows.length-1; i >= 0; i--){ var r = S.rows[i];
+      if (r.block === '4' && r.out === 'IN' && r.pe === '-') return r; }
+    return null;
+  }
+  function reset(S, v){
+    for (var i = S.rows.length-1; i >= 0; i--){ var r = S.rows[i];
+      if (r.block === '4' && r.out !== 'IN' && r.reset === '-'){ r.reset = v; return r; } }
+    return null;
+  }
+  function undo(S){ var r = S.rows.pop(); if (S.block === '4' && r) S.s12 = r.s12; return r; }
+  function stats(rows){
+    var f = rows.filter(function(r){ return r.s12==='1'; });
+    var n = f.length, inn = f.filter(function(r){ return r.out==='IN'; }).length;
+    var faults = f.filter(function(r){ return r.out!=='IN'; }), net = faults.filter(function(r){ return r.out==='NET'; }).length;
+    var inside = f.filter(function(r){ return r.inside==='Y'; });
+    var pass = inside.filter(function(r){ return r.out!=='NET'; }).length;
+    var cheat = inside.filter(function(r){ return r.out==='NET'; }).length;
+    var notIn = f.filter(function(r){ return r.inside==='N'; });
+    return {n:n, inn:inn, faults:faults.length, net:net, inside:inside.length, pass:pass, cheat:cheat,
+            notIn:notIn.length, clearIn:pass, clearNot:notIn.filter(function(r){ return r.out!=='NET'; }).length,
+            inIn:inside.filter(function(r){ return r.out==='IN'; }).length, inNot:notIn.filter(function(r){ return r.out==='IN'; }).length,
+            second:rows.filter(function(r){ return r.s12==='2'; }).length, df:rows.filter(function(r){ return r.s12==='2' && r.out!=='IN'; }).length};
+  }
+  function byBlock(S, b){ return stats(S.rows.filter(function(r){ return r.block===b; })); }
+  function q(s){ return '"' + String(s||'').replace(/"/g,"'").replace(/\r?\n/g,' / ') + '"'; }
+  function pct(a,b){ return b ? Math.round(100*a/b)+'%' : '-'; }
+  function exportText(S){
+    var lines = ['Serve,Block,Serve12,Type,Inside,Outcome,Target,PointEnd,Reset,Time'];
+    S.rows.forEach(function(r){ lines.push([r.n,r.block,r.s12,r.type,r.inside,r.out,r.target,r.pe,r.reset,r.t].join(',')); });
+    var all = stats(S.rows), per = {};
+    ['2','3','4'].forEach(function(b){ var s = byBlock(S,b); per[b] = 'n'+s.n+'/in'+s.inn+'/net'+s.net+'of'+s.faults+'/inside'+s.inside+'/pass'+s.pass+'/cheat'+s.cheat; });
+    var f4 = S.rows.filter(function(r){ return r.block==='4' && r.out!=='IN'; });
+    var rY = f4.filter(function(r){ return r.reset==='Y'; }).length, rN = f4.filter(function(r){ return r.reset==='N'; }).length, rU = f4.length - rY - rN;
+    var pe = {}; S.rows.forEach(function(r){ if (r.pe !== '-') pe[r.pe] = (pe[r.pe]||0)+1; });
+    lines.push('# schema=serve_block_v1.1 date='+S.date+' evidence_class=practice admissible=false rhythm_change=2026-09-20 racket='+S.racket+' technical_owner_present=false partner=operator cue='+q('try to land well inside the court')+' tape_cm='+S.tape+' block1_half_serves='+S.b1);
+    lines.push('# pass_rule=inside_AND_clear_net cheat=inside_AND_net first_serves_only_in_blocks_2_3=true');
+    lines.push('# inside_source blocks2-3=operator_called block4=ATHLETE_SELF_REPORTED (the operator is returning and cannot watch landings; block 4 inside is not comparable to blocks 2-3)');
+    lines.push('# totals first_serves='+all.n+' in='+all.inn+' faults='+all.faults+' net_faults='+all.net+' inside='+all.inside+' pass='+all.pass+' cheat='+all.cheat+' second_serves='+all.second+' double_faults='+all.df+' total_serves='+S.rows.length);
+    lines.push('# proxy clear_when_inside='+all.clearIn+'/'+all.inside+'='+pct(all.clearIn,all.inside)+' clear_when_not_inside='+all.clearNot+'/'+all.notIn+'='+pct(all.clearNot,all.notIn)+' in_when_inside='+all.inIn+'/'+all.inside+'='+pct(all.inIn,all.inside)+' in_when_not_inside='+all.inNot+'/'+all.notIn+'='+pct(all.inNot,all.notIn));
+    lines.push('# block2='+per['2']+' block3='+per['3']+' block4='+per['4']+' block4_reset_after_fault=Y'+rY+'/N'+rN+'/untapped'+rU+'/of'+f4.length);
+    lines.push('# block4_point_ends='+Object.keys(pe).map(function(k){ return k+'='+pe[k]; }).join(';'));
+    lines.push('# athlete_words='+q(S.words)+' operator_note='+q(S.opnote));
+    return lines.join('\n');
+  }
+  return {newSession:newSession, serve:serve, pointEnd:pointEnd, reset:reset,
+          openFault:openFault, openPoint:openPoint,
+          undo:undo, stats:stats, byBlock:byBlock, exportText:exportText};
+})();
+
+/* =======================================================================
+   UI wiring. Runs only in a browser; headless tests stop at the cores.
+   ======================================================================= */
+(function () {
+  if (typeof document === "undefined" || !document.getElementById ||
+      !document.querySelectorAll) return;
+  var C = ServeCore, S = null;
+  function $(id) { return document.getElementById(id); }
+  function show(id) {
+    ["setup", "legacy", "live", "sum"].forEach(function (x) {
+      $(x).classList.toggle("hide", x !== id); });
+  }
+  function store() { try { if (S) localStorage.setItem(C.KEY, C.save(S)); } catch (e) {} }
+  function pct(a, b) { return b ? Math.round(100 * a / b) + "%" : "-"; }  // ASCII dash: Task 7 parses this
+
+  function seg(id, fn) {
+    Array.prototype.forEach.call(document.querySelectorAll("#" + id + " button"),
+      function (b) {
+        b.addEventListener("click", function () {
+          Array.prototype.forEach.call(
+            document.querySelectorAll("#" + id + " button"),
+            function (x) { x.classList.remove("on"); });
+          b.classList.add("on");
+          fn(b.getAttribute("data-v"));
+        });
+      });
+  }
+
+  var pre = { block: "A", drill: "ladder" };
+  seg("block", function (v) { pre.block = v;
+    $("drillWrap").classList.toggle("hide", v !== "A"); });
+  seg("drill", function (v) { pre.drill = v; });
+
+  $("inDate").value = C.today();
+
+  $("start").addEventListener("click", function () {
+    var d = ($("inDate").value || "").trim();
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) { $("setupMsg").textContent = "Date must be YYYY-MM-DD."; return; }
+    S = C.newSession({ date: d, block: pre.block,
+                       drill: pre.block === "A" ? pre.drill : "none",
+                       targetNote: ($("inTarget").value || "").trim() });
+    show("live"); render(); store();
+  });
+
+  $("b1stIn").addEventListener("click", function () { tap(function () { C.serve1(S, "IN"); }); });
+  $("b1stF").addEventListener("click", function () { tap(function () { C.serve1(S, "F"); }); });
+  $("b2ndIn").addEventListener("click", function () { tap(function () { C.serve2(S, "IN"); }); });
+  $("b2ndDF").addEventListener("click", function () { tap(function () { C.serve2(S, "DF"); }); });
+  function tap(fn) {
+    try { fn(); } catch (e) { $("liveMsg").textContent = e.message; return; }
+    $("liveMsg").textContent = "";
+    render(); store();
+  }
+
+  $("typeKick").addEventListener("click", function () { C.setType(S, "kick"); typeUI(); store(); });
+  $("typeSlice").addEventListener("click", function () { C.setType(S, "slice"); typeUI(); store(); });
+  function typeUI() {
+    $("typeKick").classList.toggle("on", S.serveType === "kick");
+    $("typeSlice").classList.toggle("on", S.serveType === "slice");
+  }
+  $("targetHit").addEventListener("click", function () {
+    C.toggleTargetHit(S); render(); store(); });
+  $("routineSkip").addEventListener("click", function () {
+    C.skipRoutine(S); render(); store(); });
+  $("undo").addEventListener("click", function () {
+    C.undo(S); $("liveMsg").textContent = ""; render(); store(); });
+  $("toSum").addEventListener("click", function () { renderSum(); show("sum"); });
+
+  function render() {
+    var names = { A: "BLOCK A · CONSEQUENCE", B: "BLOCK B · MATCH SIM",
+                  C: "BLOCK C · FATIGUE" };
+    $("blkName").textContent = names[S.block];
+    $("repNo").textContent = "rep " + S.rows.length;
+    $("cue").textContent = S.block === "B" && S.need2 ? "second serve (after fault)"
+      : S.block === "B" ? "first serve" : "second serve";
+    var st = C.stats(S);
+    $("liveCnt").textContent = "second serves: " + st.second + " · DF " + st.df +
+      (S.block === "B" ? " · first serves: " + st.first : "");
+    $("k2nd").textContent = st.second;
+    $("kIn").textContent = pct(st.second_in, st.second);
+    $("kDF").textContent = pct(st.df, st.second);
+    if (S.block === "B") {
+      $("kRush").textContent = pct(st.afDF, st.af2);
+      $("kRushLbl").textContent = "after-fault DF";
+    } else {
+      $("kRush").textContent = st.ladder.cur;
+      $("kRushLbl").textContent = "ladder streak";
+    }
+    var isLadder = S.drill === "ladder" && S.block !== "B";
+    $("ladderBox").classList.toggle("hide", !isLadder);
+    if (isLadder) $("kStreak").textContent = st.ladder.cur;
+    $("firstRow").classList.toggle("hide", !(S.block === "B" && !S.need2));
+    $("askFirst").classList.toggle("hide", !(S.block === "B" && !S.need2));
+    $("secondRow").classList.toggle("hide", S.block === "B" && !S.need2);
+    $("askSecond").classList.toggle("hide", S.block === "B" && !S.need2);
+    $("targetHit").classList.toggle("hide", !C.targetDrillActive(S));
+    var last = S.rows[S.rows.length - 1];
+    $("targetHit").classList.toggle("on", !!(last && last.targetHit));
+    $("routineSkip").classList.toggle("on", !!(last && last.routineSkipped));
+    typeUI();
+  }
+
+  function renderSum() {
+    S.notes = $("inNotes").value;
+    var st = C.stats(S);
+    $("sumSub").textContent = S.date + " · Block " + S.block +
+      (S.block === "A" ? " · " + S.drill : "") +
+      (S.targetNote ? " · target: " + S.targetNote : "");
+    var rows = [
+      ["Second serves", st.second],
+      ["Double faults", st.df + " (" + pct(st.df, st.second) + ")"],
+      ["Second-serve in", pct(st.second_in, st.second)],
+      ["Kick 2nd serves", st.kick2 + " · DF " + st.kickDF + " (" + pct(st.kickDF, st.kick2) + ")"],
+      ["Slice 2nd serves", st.slice2 + " · DF " + st.sliceDF + " (" + pct(st.sliceDF, st.slice2) + ")"],
+      ["After-fault DF (B)", pct(st.afDF, st.af2) + " (" + st.afDF + "/" + st.af2 + ")"],
+      ["First serves in (B)", st.first_in + "/" + st.first +
+        " (" + pct(st.first_in, st.first) + ")"],
+      ["Routine adherence", st.routine_done + "/" + st.routine_total +
+        " (" + pct(st.routine_done, st.routine_total) + ")"],
+      ["Ladder best streak", st.ladder.best],
+      ["Target hits", st.target_hits + (st.target_offered ? "/" + st.target_offered : "")]
+    ];
+    $("sumTbl").innerHTML = rows.map(function (r) {
+      return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>"; }).join("");
+    $("takeaway").textContent = "Takeaway: " + C.takeaway(S);
+    $("footOut").value = C.exportFooter(S);
+    store();
+  }
+
+  $("backLive").addEventListener("click", function () { show("live"); render(); });
+  $("selFoot").addEventListener("click", function () {
+    var t = $("footOut"); t.focus(); t.select();
+    try { t.setSelectionRange(0, t.value.length); } catch (e) {} });
+  $("dl").addEventListener("click", function () {
+    try {
+      var blob = new Blob([C.exportCSV(S)], { type: "text/csv" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "toto_serve_" + S.date + "_" + S.block + ".csv";
+      document.body.appendChild(a); a.click(); a.remove();
+      $("sumMsg").textContent = "";
+    } catch (e) { $("sumMsg").textContent = "Download blocked — copy the footer block."; }
+  });
+  $("endBtn").addEventListener("click", function () {
+    S.ended = true; store();
+    try { localStorage.removeItem(C.KEY); } catch (e) {}
+    S = null;
+    $("inDate").value = C.today(); $("inTarget").value = "";
+    show("setup");
+  });
+
+  // ---- boot: resume a v2 session, or surface a legacy v1 save ----------
+  (function boot() {
+    var resumed = false;
+    try {
+      var raw = localStorage.getItem(C.KEY);
+      if (raw) { S = C.restore(raw); resumed = true; }
+    } catch (e) {}
+    try {
+      if (!resumed) {
+        var leg = localStorage.getItem(C.LEGACY_KEY);
+        if (leg && C.isLegacySave(leg)) {
+          $("legacy").classList.remove("hide");
+          $("legExport").addEventListener("click", function () {
+            var o = JSON.parse(localStorage.getItem(C.LEGACY_KEY));
+            var LS = LegacyCore.newSession(o);
+            LS.rows = o.rows;
+            $("legOut").value = LegacyCore.exportText(LS);
+            $("legOut").classList.remove("hide");
+          });
+          $("legDiscard").addEventListener("click", function () {
+            try { localStorage.removeItem(C.LEGACY_KEY); } catch (e) {}
+            $("legacy").classList.add("hide");
+          });
+        }
+      }
+    } catch (e) {}
+    try { if (navigator.wakeLock) navigator.wakeLock.request("screen").catch(function () {}); } catch (e) {}
+    if (resumed) { show("live"); render(); }
+  })();
+})();
+
+</script>
+</body>
+</html>
