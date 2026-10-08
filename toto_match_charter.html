@@ -29,6 +29,9 @@
        suffix (FH-SL, BH-DR, FH-SL-LB), which the loader already parses.
        No tap = no modifier = zero cost. Armable ("mods" in chips_armed).
     E. net_rusher on the pre-match archetype card.
+  v3.2+ = Task 4 (maintenance): pre-flight gains "Opponent age" and the footer
+    gains the EXTENDED key opp_age= (existing keys untouched; blank = unknown).
+    Per-point flow unchanged: zero extra taps per point.
   =====================================================================
   CONTRACT (the loader is the arbiter; see DESIGN.md §27):
     * v12 columns first, in v12 order, names unchanged:
@@ -120,6 +123,7 @@
       </div>
       <label class="l">Opponent name</label><input class="t" id="inOpp" placeholder="e.g. Chan K.">
       <label class="l">Opponent UTR (number, or UR)</label><input class="t" id="inUtr" placeholder="e.g. 3.4">
+      <label class="l">Opponent age (years)</label><input class="t" id="inOppAge" placeholder="e.g. 11">
       <label class="l">UTR reliability %</label><input class="t" id="inRel" placeholder="e.g. 80">
       <div id="segs"></div>
       <label class="l">Tiebreak at (games-all)</label><input class="t" id="inTbAt" placeholder="6">
@@ -221,6 +225,7 @@ var CharterCore = (function () {
   function defaultCfg() {
     return {
       opponent: "", utr: "", utr_reliability: "", utr_basis: "unrated",
+      opp_age: "",
       archetype: "unknown", presentation: "unknown", narrative: "name_only",
       seed: "na", restring_date: "", strings: "", event: "",
       competition_class: "hkcta_club", match_sequence_in_day: "1",
@@ -554,7 +559,7 @@ var CharterCore = (function () {
   function footer(st) {
     var c = st.cfg, s = stats(st), arm = ARM_KEYS.filter(function (k) { return c.armed[k]; });
     var kv = [
-      ["opponent", c.opponent || "OPP"], ["utr", c.utr || "UR"], ["utr_reliability", c.utr_reliability],
+      ["opponent", c.opponent || "OPP"], ["utr", c.utr || "UR"], ["opp_age", c.opp_age], ["utr_reliability", c.utr_reliability],
       ["utr_basis", c.utr_basis], ["opponent_archetype", c.archetype],
       ["opponent_presentation", c.presentation], ["narrative_exposure", c.narrative],
       ["seed_position", c.seed], ["restring_date", c.restring_date], ["strings", c.strings],
@@ -673,6 +678,7 @@ var CharterUI = (function () {
   function readInputs() {
     pre.opponent = ($("inOpp").value || "").trim();
     pre.utr = ($("inUtr").value || "").trim();
+    pre.opp_age = ($("inOppAge").value || "").trim();
     pre.utr_reliability = ($("inRel").value || "").trim();
     pre.tb_at = +($("inTbAt").value || pre.set_len);
     pre.event = ($("inEvent").value || "").trim();
