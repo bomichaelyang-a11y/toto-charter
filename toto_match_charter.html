@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Toto Match Charter v3.2</title>
+<!-- PWA / iOS home-screen additions (Task 2): head markup only.
+     No charting behavior, data format, or localStorage change.
+     Manifest + icons are inlined as data URIs so this stays a SINGLE file. -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Charter">
+<meta name="theme-color" content="#2456A6">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiVG90byBNYXRjaCBDaGFydGVyIiwic2hvcnRfbmFtZSI6IkNoYXJ0ZXIiLCJzdGFydF91cmwiOiIuL3RvdG9fbWF0Y2hfY2hhcnRlci5odG1sIiwic2NvcGUiOiIuLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiNGNkY1RjEiLCJ0aGVtZV9jb2xvciI6IiMyNDU2QTYiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FJQUFBRGR2dnRRQUFBSGpVbEVRVlI0MnUyZFBZN3NSQlNGYXdXc2czMlFzWWkzQ0RKWUFDSW5RR0lCaEM5akErOUZwQVRrU0VSRTdNQ1VaR24wTkZQdGNkdDF6LzJwenpyUmRJL2IzZjU4NzdtM3lxNzIxUS9mSW5SWmpaOEFBUkFDSUFSQUNJQVFBaUFFUUFpQUVBQWhCRUFJZ0JBQUlRQkNDSUFRQUNFQVFnQ0VFQUFoQUVJQWhBQUlBUkJDQUlRQUNBRVFBaUNFQU9nOWZmM1RodysvL2ZqOTc3OSsvUE5UMXg5Ly83VnQyei8vL2R2L09GUi9xYitodjIxL2YvL0gvc2UrRXdCYWk1Z1hWb2JiTjc5ODkramYrMHVQL211bmFrR2VsZ0JvaDJhUEg4ZGJmK2U3dTNwM0ovMkRkcGdBcUFJMzIrbXR2L25NYnAvZFoyMlNDZ0xVRTgxVDUvZ2xCdzBSSEo3K2d3eDRRTkpCY2dTZ0VPcXU5a3llR2lhZHQ5NmwvMlYvZGZqUzVRL3FCd2xBNGF6eHo1OC9YanVqWnhBNXh1c2FSdjJBYTlqdFZnQ2Q3ZDQyVEZLdmt1RFFIcDB4MU1kYkFZemFnZ25yMVNsOHUrY2hsT2ZmdVZSU2EwbkxxL3ZvWElncloyTFZaWXlTRm1zdFhjNmFjc0l1TzV1Smhub0lkTHFNMW5MbHJHM2VkZzJGNlliNjdaWXJvN1hWQXMvOVpHUmtxSk9Hb3JhTzR6a200S253Tmd3U2N4SFA0b3FpQTNTL3pEblpjWjRTd3k1MHFDOFVpUURrazdZT0hNeUZDRGR4VjZuVFdRdEx6L1F6TVQxc3pBcG0xMkFGSURVOUZwMUFvKzVpSW9aYVFNdThHV3gyMFVKamhrNU9WMW9kSUNONlRQMkt6QXpGWktpVnAwY1FKR1JtS0NCRHJUdzlHcHNpTTBQUkdHcEJYTFBSRDkzenlGTno0Kzlzd3dtSFJvbHNPQlN6S0VCMmR1SFJyMnowY1VOWVRhK05DQXkxd3ZRSUJoeW1ENUtrWThnWklMdlRLVGEyTGxYOWR2cE9rcG9BMlhsTTY0azd2dk05UW8yWHRYcGxsMHZ5Y2t4a3ZrVlpxMmQ5dkpLWFl5SnpORU90bVBVUlYxNUJLakpITStRQWtHa3dGemYwUWgySnkxellWcVpuS0c0YkJtd3R1blFYVzZYa05UeGhkczdqbWhzekJWcWZ5RnFaeWt0Zis4U3NCOFVWbVJRZ2NmVFdOSDZpdFlXR2Vid0NRSXQ0NTlYY2RDdlErTkhYek1FN0M4cTJVQ3N3YXVIYmQ0N3B6MlRqRzQzU25aSStPa0Q2OE9OWXVqOVYwaGNJUWkxMThaVWwvTGdFSVUwNTFsSVhYMW5DajFjUUVwUmpyVmo0Q1ZWOFJTakhjZ05rbWsyR2wxZVEzczlUdnNRMENGay9XN2psSGZrU2QzaVRIcmIxNkpndFFKVXU1YnlCTXl0QXBrT24rclpLM3NyUmRIaTFaY3hmK21rU0F2cVQzcm5STXVhditHTVgwVVkyOGdGa21yK0d4ZkNXYWhNM0lPeXlXS3VSdjhRM1hSaWQwWXhacktYckgyYlBYeTVaeks2amFBS1FhVFF1a0w5Y3NwalI0SHpMWllCcTVDK1hMR1prZzFvdUF4UjU2bXJ3NzJKa2cwd0FFbDlHWVlmZlEwWFQ0Y2NGQlVqY3o5alNiaEYrdlhBQTJUbkJTZ2JJSmFCYStPaVd5RUhIdkhVd1VVdkN3a2ZQQjhqdWpOb3RHQmlxRzJSM0JWcE1VR3lKU3JCS0R0b2xLVnNVWXBrQUt0TkM5R29uNWdESUxpUVVLOEgwWDhxaWttK3BhL2pVSmRoQlhrNVV5YWNCU093M2ZRR3lzd0VBQkVBQUJFQUFCRUFBQkVBQUJFQUFCRUFBQkVBQUJFQUFCRUFBQkVBQXhGREc4a01aREthRy9WSTVCbE9aem5FVG9OV25jekNoN0daSVdIMUNHVk5hdzFZR09hYTBNcW4rNWhsZGZWSTl0L1dFVGNvNWJ1dmh4c0t3WDRkYm03bTFPVllOejhNVlBEY2Vyc0RqWFRKRjAweVBkK0VCVTlGYWlGdXVCMHp4aUx0b0xZbGtqN2pqSVp2UjhsZStoMnp5bU45UStTdmZZMzU1MEhpb2xqcExIYnlmeFZqcVFKKy9XR3pGWVdPeEZaWjdtcDkvV2U2SkJlZUNIbmJ1QmVkWTh0STljT1plOHBKRmQ4ODBJRmgwbDJXL3J4ZVBMUHNkTGdpRnJlZkZsYU1nL0lnQU12VWxXWUtRUHZ3TS9WWktnRXg5U1pZZ3BHOWNHUTIvT3dEa0VvUkNqV3pveHk0MDRVY0hVTDhhVmk3SDlNV1hKdnpvQUhLNTRJTDBoUFRISmlpK0hBRFNwM3pUc0hjbkdPaE5ZUkdBVElkWFk5NTJxUGRucGtPbnpnQlovM2JpYVJMWFNuZlRDdEY2NU1zZm9LVksrcXFsdXlkQTY3anAydDdaRXlEOU5BLzlYRE45WjBHZnZEd0JNcTJQSXR5MkliN3BRdG40Q1FHUTlSbjE3VTNyNjBGeDVSVUNJR3RENE5VVzBqZCtaS01XNFFBcWVmOWhtVHNHY3dCa0doWDBpVXgvdzdLWDlZa0NrRFZEeW9wTVhIbEZvQ2NFUU5hL3NxeTFLRzRiUnFBbkNrQ203a1RUMEJPM0RSM0xycUFBbVRKa2JXekZoajBPUGJFQXN2dlJINVhXVS9LTDZjNkQweE1PSUR1RzdJS0VzbTZQUms5RWdPd3VYd3ViSXJNK1FXcXVIQURaTVRRM1dzaXNUMWg2NGdLME16Uzk2VGZScjhpc1QvOFJ3dElUR2lDamREQXJiR2lzais4NFZ3V0E5ck03OTdLK1ArQWdHQ1RwWHptZ1pVNEprRVU2dTdOeWxHQ05wdUJwS3g5QUZxT1MxeHlNWUxhR3k4elVKUUNhRzRxdW9XQnFuQk1GbnF3QXpYVkZ6eVlqdXlVVHN6aWVJZ0M5WkxUN0dKM3ZCQnIxRFB0WHlKV3o2Z0MwcDQvN3AvQk1YREV5enYzZzArV3NVZ0I5aWRHZGFIVHNiS1liNTc3REF1alVBZWgrVWp0R1pLSnh6cDZ3aWdQME11SHdnckY5MUtHZTFYSHVoMlQ5eEYwQW1sK3NQVVhTeVRzY250MW4wdklLZ0Y2VGRDYnB2SHV5enhqbi9rSGx1VmtMb0MrOXl3N1RRUTQ2U0RRSHMvSDdEbmRvYWxoakFIcUNwKzVxKzdsL29XcnY2UTIxeDdDZGxhNytqd3NTQTBBSWdCQUFJUUJDQ0lBUUFDRUFRZ0NFQUFnaEFFSUFoQUFJQVJCQ0FJUUFDQUVRQWlDRUFBZ0JFQUlnQkVBSUFSQUNJQVJBQ0lBUUFDRUVRRWl2L3dHN3FXV1FyU256VlFBQUFBQkpSVTVFcmtKZ2dnPT0iLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn0seyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFYUTBsRVFWUjQydTNkUFhJZE54YUdZYTdBNi9BK25Ia1JYSVF5elFKVXpoV29TZ3RRcUV3YkdFVk9KM0R1S2tlT3ZJTTdQWFZuT0NxU29pL1JRRGR3dnVmVUc3bG1TTEYvOEI2Y0E2RHZmdmpIendDQVFPNWNBZ0FnQUFBQUFRQUFDQUFBUUFBQUFBSUFBQkFBQUlBQUFBQUVBQUFnQUFBQUFRQUFDQUFBUUFBQUFBSUFBQkFBQUlBQUFBQUVBQUFnQUFBQUFRQUFDQUFBUUFBQUFBSUFBQkFBQUlBQUFJQUFBQUFFQUFBZ0FBQUFBUUFBQ0FBQVFBQUFBQUlBQUJBQUFJQUFBQUFFQUFBZ0FBQUFBUUFBQ0FBQVFBQUFBQUlBQUJBQUFJQUFBQUFFQUFBZ0FBQUFBUUFBQ0FBQVFBQUFBQUlBQUFKd0ZRQ0FBQUFBQkFBQUlBQUFBQUVBQUFnQUFFQUFBQUFDQUFBUUFBQ0FBQUFBQkFBQUlBQUFBQUVBQUFnQUFFQUFBQUFDQUFBUUFBQ0FBQUFBQkFBQUlBQUFBQUVBQUFnQUFFQUFBQUFDUUFvL2ZYaHovK25kald6L1kxY01CQUFzTTdLLy9mTHg4Ny8rZWVYWDMzKzcvQzhlL21NRER6OWsrNEVQLzNIN1JUd0JBZ0FPNVRyc1BoM2lYNGp0Zjcvek45N3lXeDcwY1AwWHVsTWdBS0RQY0gvaldQODB0bFI5L3o5ait5RnR2LzFxQlVvQUFRQTNqZmpYTXM0ZmYvMTUyUjNieituMUQvdTJGdFFjMngvMVVENXlyMEVBU09mSFgrNTM1dmd2akxaOS82bGRuUFRzL0dDN0NKNEVFQUN5QnYzdVErcTNvMy8zVVhYN2dVUC93V1FBQWtEbDhzNzdyNSs3Wi9yUHhxREZPZHVQUGVBZnYxMmk3VUlwRTRFQVVDVFp2eHdZUTRmT0d4Y0Y5UXJUQWhBQTFodjMzMzc1ZUV5eVA2N3hPN1FoM0RBdDJDNHBFNEFBWU56LzdpaDV6Rjk2N3QvSUJDQUFUTVM1NC82NHh1OHBEZUZYbWNDekJ3TEFPZnowNGMwcDlaQm5vMjMwYjk2bHRmMjZTZjd3N1JZNGtRSUVnT05LUGUrL2ZqNDlCZDdmK0gzbzZPNzh2ODhRMiszWWJvclNFQWdBQTFQKzAwczlUMk1iK0hhV2NackxSOXV2bnUxcWJEZkloQUFFZ003ZDNhbFMvdjNMZmg3OU9jMDdoK2NwZ2ozNmMvU0tRUURvVU8yNXpCck5tZnV6bzNhYlMyWm9DTDg4UGFJQkVBQXFWSHU2alA0dm5PN1p0cTVtY2dlb0M0RUFVR2ZvSDlxNUxkQVFwZ0VRQU1vTy9VTlQ5UkVUQ3hvQUFjRFFQMWZqdC90UjBuTTJoR2tBQklBS1EvOWhvL05veDlBQUNBQ0cvb01hdncxcm1mWnZMNkFCRUFCbVhOeTUzTkIvU29lMmNFUDRXUTFZTUVvQXNLNi9XdU4zenkrdDNSQzJid0FFa01LMHUzbkhGZVgzRjJUNjdqVmJwYzdtbkZFQ1FLbHkvN3BELytuTGNrSWF3ayt2dWNZQUFXRDVtcys2cWVqeGpWOE40YWZ5VXhFaUFLeGE4N21zSDVOMFlxTWF3bDI2THlBQVdPZHpUdU8zZStwZGZvZXdOVUlFZ0Fxc3U4NW44dUo3d2c3aEVhVXdFQUEwZXl1TXRwa05ZYzFoQW9ERS85Q1l0dDV5eW5ZRVV3RVFBTXF1TmxtcjQ1cmNFTjdmRkFFQndGS2ZoZGRjVnZxR3NBVkNCT0FxV09PL2ZPUDM0RlZQMjY4TGJ3amJLMEFBT0kzN1QrK0tsWDB1cTUyN1VQSWJ3czAzcnEwc0JnS0FTc0ovbzIxNXlZbTE5YlpSYi9zelM5NCtuV0VDZ0IxZWh3Nm1wNit1YVp1eUZHc0lmMXNaVXc0aUFGam1uMUpPQ1R3dTlHOHZpSTBDQkFDcmZWNHhaQ3pkVUxVN3pPb2dBc0JBcW1hTGU2b29VeG5SN3JDT1hnUUJvUEtpa1pKOTFPVTYyRFBYeDBBQXFGejByN2VTVWpOQVM0QUEwSE9sLzZWMDFOdEx0Y291dGxYbWVTQUFMVi9GZ1pYMlFNUitPMHhibUFDZzVUczJKVnhpVnVTb09HMWhBb0RSUHpSTmRsUWNCeEFBN1BMdFhQcGY2T0lrL0kxN0xvNmxRUVNBdUNwd1ZIYXNHVERpTVFBQkdQMlYvdjJ4SEFBQ01QcExpazEzT0FBRVlQUlhGdmRYY3dBSXdPZy9ZeFE0OEtjdEhCUEVBUVNBWjBxOU9hTi8rSWRUSEJQMHR3NndWWmdBNVA0MXc2Y1RIUk5rSGtBQVNCejlWei9yLzF3TC9sRDZtd0VjUUFCR2Y2WC9sT3JIb3QrODVBQUNnTkZmLzFNbm5BTUlBRVovUlE4Rk1RNGdBQmo5dTcvRDVmZEFPU0tDQXdnZ2pwQjlQVHZyM1NFTEgxMmNXNko1RHgwSVlDNmk1dStTWE5PajA2dUlJQUNqdnpLM0Jna0hnQURPSTJyOXhqWHNlaDFhQ0Nxek8vcjI4QzFKQWxqMXNBZnZxcVh1TDRSVm9VTmxDUUk0amNCTXpjbVhydGhzTTBzUWdFV2Y4bGx6cHR6T09RamdhQUpIZndNWmNVNjd2Z0FFWU5tUFVvYXJ0M3hZRkVRQWx2MFV5V0hUVnJXL0VNMDdKeFROUUFBYXYrdXQwTWk4VnQyYm5JRXJ6VFNFQ1VEamQva3BlZUMxR2xUZ0RpdzVhZ2dUZ05OK0ZuNFBGWC82Rm9JQ2JlcWtJQUtZaU13UlRmRkhJV2c1WDRJQTdQZzlNd1ZUL0JsUkNNcGNUMldITUFFby9aOFRWcThQQ2pzcU5BTUl3S3AvZzFSdWtPdnRZV2NBQVZqMXYwYnh4N1l2VjNpZWRBUUVzTGY0SXo4bFMzT3NkWjlKRUlBRGZ3eE1SRnVoR1dCRUlnRHJQaWQ5elRJN0pXZFZ0ek5URTZ0Q0NjQ1JEMlBES3ZXRHcwNkxBNTVQQW5BVlpGZ0RNeXdMLzQrZmNwbWhnZ0FVZjNxK1drNTlXTWk3c2R0VEZJSUl3TXFmV1hxL1RuMDRzYklSdSt6S2lpQUNjT0piejdBczNmVlB1RndFQUNsVnQ1VEt3di9UWjJBbXJDQUF4UjgxYUQwWVdRc0l3Smsvcng5M3RNcFhiMjltbXRnWlFRUmc0Yi9lcjI1d2JpM090Z0FDc1BCZjc5RWRDYjBqdGdVUWdONnZmTk9jekJRV0JPQjdMeXJPdWpKNWwwczNtQURzKzMxMVdITlN6TTJXc1lFQXZETURKODdPZko1Y3p6YXlnQUMwemhRWkZPaXl3dDVnQXRBMzAyWXNGVnIwQjF3dUFwRCt5NVZjTG5mS0pJQUFwUDhTSlpmTHpUSUpJQURwdnl4SlpYbmRibzNIR3dRZ1JWSlcxckR4aEJPQXF5QS84Z255c0VsQTV1R0dKZ0VFSURsNlBpd3RqNW9FeEc3YU1Ba2dBT24vNDdDdVBIQVNrTGx2d3lTQUFLVC8wbitUQUpNQUVJRDBYL3B2RW1BU1FBQ1Eva3YvVFFKTUFnaEEraS85bC82YkJKZ0VFSUNEUDZYLzBuK1RBRTgrQVRqM1gvb3YvVGNKOFBBVGdQUmYraTlNQWt3Q0NLQUVtU09hOU44a0lId1M0SXZCQkpBN29qbjV4NkFXdmdTdTJaY0VZUFhuMnVIZ1Q0T2FWWEFYNjBFSndITlBsbTZ1VElnQXRIODk5R1RwL3NaRmVDczRXZ0I2WHpKRWt3Q3JJUWhBKzFlTm1Dd05hdDRJQXREK2xmNnJsYVZXTmpJbkFjbXQ0RndCWkg0VXFXMWNrUDZIVEFJeVRkLzhPVHdDV0JpRGdzcUF5Z2JaWDRNQTdQNDExWDJlKzAvdmpLY3J4bmJqbEVhSGxrWUp3UEwvWmNMcVFIZmNIZTkrclFqQTh2L0tPWTdWbjRGenZzejVjZWFHZ0R2MUgxVk9GZUdxMGR6MWtTRVJnUHFQZ2VCbll5anhxd0lSZ1BwUFlpbEErN2RBYUFXckFoRkFkUDNIQ1pISjRlUlhWU0FDaUI3VTdQNE5EN3VDVllFSUlIZFE4LzZIaHd4QUZZZ0FRb3ZhS2dCQ0RYQjB5NFFBblA5VDZvRzIvTDlZV0FWd1k2U2RDNVFsZ01BMzN5cEFjYkVPZVB3clF3RHFQM1hTR2ZVZlZTQ1RaZ0x3L1MvMUg2RUtaTFpFQUJhQXF2OElWYUNBaUZvTW1pS0F3RFZ0Nmo5Q0ZhZ3RjaGFEM21rQXFQK28vNmdDZVhjeTJ3QXBBZ2pNWXRSL2hDclF3Yk5uQXBpVXRMS0dqNEVJVDhYeDVUSUMwQUNZSXV6K0Z4MnIyNEhuZ29TMEFlNDBBRHkrenYrUkdjZ01NdHNBZHhvQUpyREpuUkxWYlVYVTVEWkFoQURTS3BoNmZlS0ZzRHBnYUwrRUFCd0J0T1RzMVFMUWtMQVlkS2dwQ1VBRFFJb25UQkMxQVFqQU55RFhtYnBhQU9vSjhZUjhHd2xmaUx6VEFaYmZhUUNZSTVvalBvMkVQbkI5QWFTdFhtaWJ0d1lXeXBMRFEzSkxKR3dIdTlNQmx0eHBBR2dEZUpzNnZrMEVvQU84V0huWERnREZEVzJBWGxNbEFpQ0F4VjVzWTZMY1ZxSkFBRHJBaWMrckhRQ0JZVGZBMEl5S0FPd0JQaUhhamdEU0FRNk10bHdoN1ZDZzh2dUI3M1NBemVzMUFMUUJ2Rk45M3lrQ0lJQmxYbWxid0FMRGVnRUNLQzZBdE1xR3RYM2lnS0V0YmNWdzdUNHdBYVEvcVRyQXNhRVBUQUNWQlpBMlYvVStDeG5EUEpWVkFpQUFNM3FoWmtnQUJHQU42T0R3RlRCeDJOQVdkYjVXN1pXZ2xRWGdaZll5QzBuRFdYTnJBaUFBMDNtaGJFZ0FCSEE0YWEwcURUM1JFQllPakx0S0JHQU42T3dDc0FRb1BEdzI0NjRTQVJEQWNlRVVJSEhZMEpaMkloQUIrQlJ3elRLbEpVRGg0VVNnVzZMd3g0SExDc0JDQlZkSkVNQzVWNGtBQ0dEcUI1UUFDTUNUUXdBRUlJOFRvZUg5SWdEYmdBbEFFQUFCUEIrRk53T1hGVURVTzl6Y3BETDhDWXNzeGwwbEFpQ0FJOEl1TU5FYzlvSVJBQUVrQ3NBbUFPSGhJUUFDOEE0TEF2RHdFQUFCZUljRkFYaDRDTUJKY09XZlRnSVFseDNuSEVSZHBhcm53ZFVVZ1BURVZSSUVNTU5WSWdBQ21GUUF0Z0dMaTAwa0JFQUFCQ0FJZ0FBSWdBQUlRQkFBQVJBQUFSQ0FJQUFDSUFBQ0lBQkJBQVJBQUFSQUFJSUFDSUFBQ0lBQUJBRVFBQUVRQUFFSUFpQUFBaUFBQWhBRVFBQUVRQUFFSUFpQUFBaUFBQWhBRUFBQkVBQUJFSUFnQUFJZ0FBSTRWUUFPZ3hNWGg4RVJnT09nQ1VBUUFBRzhFSTZEOWtHWWF1OHdBUWdQejlBY2l3QUl3RHNzUER3RVFBQUU0QjBXSGg0Q0lBQUNtT0VkVHV1VWlJN1ZiUUlnQUFLWUpkNSsrZWdxaVNPSHR1MlJjNVVJWUY1Ky9mMjNuS2ZUVW01eDhOQVd0WWxrRzB3SVlER2lIbEFDRUFRdzRmdEZBQVF3OVFOcU0zQjRlSElJZ0FEa2NZSUF6QjBKb0JDYVZBUWdDS0JMTkMreUlBREhBUjBVUC81eTd5cUoxMGJiQXVMdFlYT1ZDSUFBbG45R0NZQUFQRFlFNER5NDBHZlVYckR3c0F0czNGVWlBSHZCam92M1h6KzdTdUsxMGZiTWJBK2JxMFFBQkRCUk5IZnovdmpyVCtOZ1pteTMzdG9CQWlqN3QwVnRCdll5QzBuRGlDaThEYmk0QU9RcHB2TkMyZkFzVFJJQUFSd2FHbnJpVldIaEFBRlVGb0RGYXQ1bklXTTQ1YlVpQUFJd294ZHFoZ1JBQUJZQ3pUMVhqZXFXaTJzMDl6YTExZ2lBQUVvOXJCWUNCWVpUZ0FpZ3ZnRFNjbHNuQW9taGxZMjBVNEJxcndHdEw0QzAzRllmV053WU9zQkQ1MGtFb0E5c1hpOVVDeE16S2dJZ2dNVm1yTm9BRWdVMVZRTFFCdzdON093SGpnb3Job2UrVFFRd0VXbUhuVG5oWFhoSXVrVHorVm9Fb0E4c3VST21pYUdGTWdMd2NlRDEyZ0MyZzNsQ1BDSGZSdUZQQVFjSklMQzRJYjhUNW9obkZjb0lRQjk0eVFmWGJvQ1FzQU5nYUNKRkFQWURTL0dFQ1dKb29Zd0E5SUZQRGw4SEU5OExYd0ViZmFFSVFCdmcvR2c3RkNpdFlSNFliWTNOdENPQVFob0FLUUlJZkh5OTUwSm1jUHlGSWdEYndkYXVZRm9NNnFud1ZDUnNBY3NTUUdCMVc2OVBQQXFyQXpRQVFnVVEyQWF3R0ZROENndEFOUUJDQlJCWTNiYmVRM1FwYXdUT25rTWFBRUVDeUt4dXF3SUo5Wi9ET2lVRU1EV0I0NW9xa0ZEL09jeVVCS0FOb0FvazFIODBBQWpBb1VDcVFFTDlKK2FWSVFDTFFWV0JoUHBQNktTWkFGU0JTblcwVklIVWZ3TFhUVVRWZitJRWtIblVnZDMvNGVGY2tORXZDd0ZZRE9yOUZ6S0EwT2t5QWZoQ3BBcUFVQU5NVEpVSVFCVm85dEFEakEyckFOUi9DQ0E5c2JVS01EYXNBMWIvSVFEdFRRTkJZaEMvK2c4QnFBSzFQOTgyQkFTVy9qSXpwTUQ2VDZnQU1xdEFQZ2JpanJ2ajZqOEVrSnZqYUFWSGhmYXYrZzhCcUhKMnFBamJGYnhjTksvOXplejZ4QTZEdVFJSVBCZW91ZENwRlJ3aSs4ejJXTnI1UHdSZ3FtdGNZSHFsMFYybFVRSlluc0RLaHNxQTlOOGIwZVdOSUFEZkNBdWFCRmdQV2o2bHpVei9vNzcvUlFBcUcxWUh1ci91Nzk1YUdRSFlFQkNYSVpvRXVMbGtTUUJhd2JuUHZmV2dWU3ZhTWlFQzBBcjI2Q3NUYS9DUUpRSFlGYXozeFpjeEk1clZFQVNnRmF6OXhaZUpJNXJubndEU3ljeUFUQUtrL3g1K0FuQVZKRUVtQWRKL1R6NEJXQThxRHpJSmtQNVhENnMvQ2NCQ0NKTUE2WDlvK20vMUp3R1lCSmdFU1ArbC93VGdLcGdFbUFSSS82WC9CQUNUQUpNQTZiLzBud0JNQWt3Q1RBS2svOUovQWpBSkNJam1qeUtaQkt5WS9tZCtEay82VHdBbUFaMlRJNU9BNWRKL1R6Z0l3Q1NnVzM1a0VyQlcrdS94QmdGSWticWxTTDRUNEdaSi93bkFKQ0EzUy9LeE1IZEsrazhBSmdIS3lrTERSdnBQQUNZQllaWGx6SFhscDRSOUc5Si9BbkJFNkZ5VGdOakxkWHpZdEhIQTVTSUE1R2ExYmUrTVNjQzA2WCtzbnAzN1R3QzdKZ0daczJaRkJnVzZHcGRMK2s4QXU5QTNjN2xXcjg1WjBRQUNhRWZyVFBQY0hjbVpMUkVBSkZEeVRYT3l4TXRGQUhCNGxvcXpyc3phMFh5NElRSEFJb3E5NDA1czgzeTJacVpsYkNBQTNlQVQzaVhkNE5OcmNUYXlnQURzRGRaN2RQMWRMaENBUXBCdXNONnZDU3NJd041Z05XZzlHSmNMQkdCWnhkaFhTemQ0ajNlbEtRZGNMZ0tBeXNhb1dzVDlwM2VHOHJiWUxwM25jL1R6U1FDdWdneHJiSWFWdVl0aVp6U3ZaRGREQlFFb0JFM1VEWFpTOUdITnpNemVyK0lQQVZnUlpHQWlXczhrQ01EV3NKRmhXYm9yWEVDV0lBQm5CTWxQemJGQ095VWdBRitNTVVpUjY5cWxmOFVmQWppWnpHV096V1VLMndKR05ETXppejl0eTJSQkFGYUZudmI2T1IvaWhiRFQ0dmF3N3BNQW5CTzM1QVRjK1JBZFI3VE1JcVFUM3doQU0yRGhGcHhDVUsvaVQrQXlCS1YvQW5CRWhFS1E0azlvOGNlUkR3UmdaOEJFb1JCMFZ2RW44RnBaOVU4QWRnWVVLY2phR3VicUhWTnlCQUU0Sm1pNnZNeldzSXNkRmVQYkpDQUFEV0VER1hGcS9JSUFOSVNWTWx3eGpWOFFnQjNDOGxsenB2bkRqbDhDc0Npb2NxWVdLRXZMWjRkbUZTQUFpNEpXNnRSRlhTZ2I2RVpmS0JBQUI1d1RqalFZMU05TTJ6bGg5Q2NBSndVRjFUZENDa0V1enRBT09RakF3bEJKcnVsUjR2TURBdUFBWlc0TkVxTS9DSUFERmx5L1VYaFZxSFdmUm44QzRJQWdCN1M5ekNYcjNXMmwvNmhORWtaL0F1QUFSWStDUlE4Rk1hTS9BU0RSQVcxalg2VkwxRHkwNVpUK2pmNEVFSGRRUkk0RHduZTkyaDM5dDZPL3d4NEl3RHhBTTZCZy8xTW5YTzVQQUVoM1FPYkpsODc3TlBvVEFEamdQNUcyQjhwdU9LTS9BWUFEOWpZREZxMkdPL0xCNkU4QTRJREVwTmlSRDBaL0FzRHJYdjZFeW05Q1dWenAvK1dMWS9RbkFPUXUvYTZkSFN2OXZ4Qk9lQ1lBY0VEbCtyalN2OUdmQUxDTDh1ZC9WVTJUbGY2L0Y3N3NTQUNRRW5Zb2xFODdRMnJPY011WC9tMzBKUUMwbklWUU96R3NkRXlRQTMrK2QxbmFUc0lBQWFCK2NhRE1NVUVPL09rb1JSQUFVcExFQXNjRU9mQkh5NWNBb0MzY21DY3U3VVZuL1d2NUVnQzBCQktiQVVyL2l2NEVBTHVGejJrR25GNUY4YzNMUnl1N0ZQMEpBR09wdW1WMHVUNXErSWR1SGtYYkhnZ1FBRnBHdlhybG9MWEtLVDUxK2UyTnM5S2ZBSEIwT2FoZUhYbVZ2VlQxZHJIdHVXWEtQZ1FBcTRQT3JDUWNtVms3N3MxcUh3S0F6V0p6MWRZUGF3WTQ3dTFpa3hjQlFHZDR0dFUxQjh5SDdQblM3eVVBMkNnd1BNR2NzTWh1ejVkbC9nUUFVNEdwRzhLRFJ0dlZkeXhML0VFQTlvdlY3ekdPYUlvMGw3eHJkT250OENJQVdDQ1UyeEJPYnZ4YTZrTUFzRmRnc2RVbUhVdGhzZC81c3NhZkFLQTVITjBRem16OGF2WVNBS3BWaE5ZZGtzNDZkeUh3c00vdFQxYnpJUURVckFpdHUwYm9sQVg0YVkzZjdmRlE4eUVBV0NPa0laelYrTFhPaHdDUTFSaFlUZ05ITm9SekdyL2JZNkRjVHdDZ0FRM2hyTWF2b1I4RWdNVTBNSHAwVHRqeGErZ0hBV0JWRFl6YklWeCt4NitoSHdTQTVUVXdxRU5idVBGcjZBY0JvSWdHUnFUcTh4dzlaT2dIQWNDK2dlTjJhWlg4eHE5MS9TQUE3TlhBdEx1SWV6V0VpelYrcjd0NURmMGdBQlN2QysxZnNGL3BHNytxUFNBQURLOExUVFVoMk5tNUxkRDQzVzZIYWc4SUFJZE9DT1lwZ0xTTmZkc2czamI2ei9PTjMrMFdTUGxCQURpTnQxOCtubDRhYWk3akxOcjQzUzY0TXp0QkFKaXJWM3lpQ2JaZmZjeGZldTdmcUxzTEFnQVQ5RndVTlBteUgrTStDQURybWVEKzA3dURSOHkybXY2Y2pkL3QwbTIvMGJnUEFzRGFiQVBaKzYrZmo1a1dER3FLYmovMm1HUi91MUJETlFZUUFFNmVGb3pybzQ1b0NBOXQvRzQvV2JJUEFrQ29ETHJQREpwMzluNlA3cVAvOWljYjlFRUF3UC9MUkcrL2ZPdzFPZWpZRU83U3hyaW0rZHNmcUx3REFnQnUycVcxWjM3UVphVjg4MEgvRHptK0VSOEVBSFJUd3UxVzJEbjQzcmpzNXpyV0crNUJBTUNoL1BUaHpYWFl2WmFQbnVyaDRUODI4SFNJZnlqamJEaURBUVFBck9TSld6Q3lnd0FBQUFRQUFDQUFBQUFCQUFBSUFBQkFBQUFBQWdBQUVBQUFnQUFBQUFRQUFDQUFBQUFCQUFBSUFBQkFBQUFBQWdBQUVBQUFnQUFBQUFRQUFDQUFBQUFCQUFBSUFBQkFBQUJBQUFBQUFnQUFFQUFBZ0FBQUFBUUFBQ0FBQUFBQkFBQUlBQUJBQUFBQUFnQUFFQUFBZ0FBQUFBUUFBQ0FBQUFBQkFBQUlBQUJBQUFBQUFnQUFFQUFBZ0FBQUFBUUFBQ0FBQUFBQkFBQUJBQUFJQUFCQUFBQUFBZ0FBRUFBQWdBQUFBQVFBQUNBQUFBQUJBQUFJQUFCQUFBQUFBZ0FBRUFBQWdBQUFBQVFBQUNBQUFBQUJBQUFJQUFCQUFBQUFBZ0FBRUFBQWdBQUFBQVFBQUFUZ0VnQUFBUUFBQ0FBQVVKMS9BNXYxTDNKaFFKakFBQUFBQUVsRlRrU3VRbUNDIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3BuZyJ9XX0=">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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">
+<!--
+  Toto Match Charter -- match_chart_v3 (single file, offline, one-handed)
+  v3.1 = CC's v3 + three second-line review patches, each marked REVIEW-3.1:
+    A. RETURN wing offered only when the player who made the ending shot was the receiver.
+    B. Wing prompt reads "Their wing" when the ending shot was the opponent's.
+    C. classify() reverted to the registered KPI convention (UE = gift/own regardless
+       of wing; only FORCED return errors credit the server). CSV rows are raw either way.
+  v3.2 = v3.1 + two operator-commissioned additions (Block 95), each marked V3.2:
+    D. Slice / drop / lob: a skippable one-tap modifier row for the point just
+       committed, on the chip bar until the next point's first tap. Offered only
+       when the ending shot was Toto's FH / BH / volley. Writes v12's EndWing
+       suffix (FH-SL, BH-DR, FH-SL-LB), which the loader already parses.
+       No tap = no modifier = zero cost. Armable ("mods" in chips_armed).
+    E. net_rusher on the pre-match archetype card.
+  =====================================================================
+  CONTRACT (the loader is the arbiter; see DESIGN.md §27):
+    * v12 columns first, in v12 order, names unchanged:
+        Pt#,Set,GameScore,Server,Side,1stServe,2ndServe,ServeDir,RallyLen,
+        PointWon,HowEnded,EndWing,TotoAtNet,Notes,ScoreBeforePt,Pressure,
+        DROP_ad_artefact,FLAG
+    * v3 columns appended, every one with a registered consumer:
+        ApproachStride,MissDir,ShotDir,RunAround,StepIn,LowPaceBall,Ball2Wing
+    * Footer: one '# key=value ...' line. Existing keys are EXTENDED, never
+      renamed. Blank chip in an ARMED match = "did not happen"; blank in an
+      unarmed match = "not charted" (chips_armed carries the difference).
+  DESIGN RULES:
+    * Conditional fields are FOLDED into taps that already happen wherever
+      the button set stays small, so they cost zero extra taps. Every folded
+      grid has an "unseen" escape: a direction nobody saw is NULL, never a
+      guess.
+    * No prompt(), alert(), confirm(), navigator.share or clipboard -- all
+      have failed in the field. Inline inputs only. No network.
+    * Pressure state is computed for the CSV and NEVER rendered: nothing on
+      screen can be read as a pressure label if the athlete glimpses it.
+-->
+<style>
+  :root{--chalk:#F6F5F1;--ink:#14213D;--court:#2456A6;--line:#D9D6CC;
+    --toto:#0E7A4A;--opp:#5B616E;--fault:#C97B12;--df:#B3372F;--muted:#8A8778;--lit:#FFD34D;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;}
+  html,body{margin:0;padding:0;background:var(--chalk);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    overscroll-behavior:none;}
+  #app{max-width:520px;margin:0 auto;padding:10px 12px 110px;}
+  .hide{display:none!important;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px;}
+  .card h2{margin:0 0 4px;font-size:18px;} .card p{margin:0 0 8px;font-size:13px;color:var(--muted);}
+  label.l{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:12px 0 5px;}
+  input.t{width:100%;border:2px solid var(--line);border-radius:10px;padding:11px;font-size:16px;user-select:text;-webkit-user-select:text;}
+  .seg{display:flex;flex-wrap:wrap;gap:6px;}
+  .seg button{flex:1 1 auto;border:2px solid var(--line);background:#fff;border-radius:10px;min-height:42px;font-size:14px;font-weight:700;color:var(--ink);padding:0 10px;}
+  .seg button.on{border-color:var(--court);background:var(--court);color:#fff;}
+  .budget{font-size:12px;font-weight:700;margin-top:8px;}
+  .board{background:var(--court);color:#fff;border-radius:14px;padding:10px 14px;margin-bottom:8px;}
+  .board .evt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-bottom:6px;display:flex;justify-content:space-between;}
+  .srow{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:10px;font-variant-numeric:tabular-nums;}
+  .srow .nm{font-weight:700;font-size:16px;display:flex;align-items:center;gap:7px;}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--lit);visibility:hidden;}
+  .srv .dot{visibility:visible;}
+  .srow .n{font-size:21px;font-weight:800;min-width:24px;text-align:center;}
+  .srow .pts{font-size:24px;font-weight:800;min-width:50px;text-align:center;background:rgba(255,255,255,.14);border-radius:8px;}
+  .kpi{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:6px;}
+  .kpi div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 4px;text-align:center;}
+  .kpi b{display:block;font-size:19px;font-variant-numeric:tabular-nums;}
+  .kpi .big b{font-size:22px;color:var(--toto);}
+  .kpi span,.mini span{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+  .mini div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:5px 4px;text-align:center;font-size:13px;font-weight:700;}
+  .mini .ok{border-color:var(--toto);color:var(--toto);}
+  .ask{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:12px 2px 6px;font-weight:700;}
+  .grid{display:grid;gap:8px;grid-template-columns:1fr 1fr;}
+  .grid.g3{grid-template-columns:1fr 1fr 1fr;}
+  button.big{border:none;border-radius:13px;min-height:60px;font-size:17px;font-weight:800;color:#fff;background:var(--court);}
+  button.big small{display:block;font-size:10px;font-weight:600;opacity:.85;margin-top:2px;}
+  button.big:active{transform:translateY(2px);}
+  .toto{background:var(--toto)!important;} .opp{background:var(--opp)!important;}
+  .fault{background:var(--fault)!important;} .df{background:var(--df)!important;}
+  .ghostish{background:#3C6FC4!important;}
+  button.big.small{min-height:40px;font-size:13px;background:#fff!important;color:var(--ink)!important;border:2px dashed var(--line)!important;grid-column:1/-1;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .chips button{flex:1 1 30%;border:2px solid var(--line);background:#fff;border-radius:22px;min-height:40px;font-size:13px;font-weight:800;color:var(--ink);}
+  .chips button.on{background:var(--lit);border-color:#C9A21F;}
+  .row{display:flex;gap:6px;margin-top:8px;}
+  .row input{flex:1;}
+  .row button,.tool button{border:2px solid var(--line);background:#fff;border-radius:10px;min-height:44px;font-size:14px;font-weight:700;color:var(--ink);padding:0 12px;}
+  .end{background:var(--toto);color:#fff;border-radius:14px;padding:14px;text-align:center;font-size:18px;font-weight:800;margin:8px 0;}
+  textarea{width:100%;border:2px solid var(--line);border-radius:10px;font-family:monospace;font-size:10px;padding:6px;user-select:text;-webkit-user-select:text;}
+  .foot{position:fixed;bottom:0;left:0;right:0;background:rgba(246,245,241,.97);border-top:1px solid var(--line);}
+  .foot .tool{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));}
+  .foot .tool button.on{background:var(--court);color:#fff;border-color:var(--court);}
+  .msg{font-size:12px;color:var(--df);font-weight:700;margin-top:6px;min-height:14px;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- PRE-FLIGHT -->
+  <div id="preflight">
+    <div class="card">
+      <h2>Pre-flight</h2>
+      <p>Everything here is written to the CSV footer. Format locks at point 1; only the no-ad (SD) toggle can change after that.</p>
+      <div id="resumeWrap" class="hide" style="margin-bottom:8px;">
+        <button class="big toto" style="width:100%;" id="resumeBtn">Resume saved match</button>
+      </div>
+      <label class="l">Opponent name</label><input class="t" id="inOpp" placeholder="e.g. Chan K.">
+      <label class="l">Opponent UTR (number, or UR)</label><input class="t" id="inUtr" placeholder="e.g. 3.4">
+      <label class="l">UTR reliability %</label><input class="t" id="inRel" placeholder="e.g. 80">
+      <div id="segs"></div>
+      <label class="l">Tiebreak at (games-all)</label><input class="t" id="inTbAt" placeholder="6">
+      <label class="l">Event / format label</label><input class="t" id="inEvent" placeholder="e.g. HK_interclub_AC_vs_HKFC">
+      <label class="l">Match number today</label><input class="t" id="inSeq" placeholder="1">
+      <label class="l">Date (YYYY-MM-DD)</label><input class="t" id="inDate">
+      <label class="l">Restring date (YYYY-MM-DD)</label><input class="t" id="inRestring" placeholder="2026-09-10">
+      <label class="l">Strings (mains / crosses, tension)</label><input class="t" id="inStrings" placeholder="Confidential 1.20 @46 / syn gut 1.20 @48">
+      <label class="l">Chips armed this match</label>
+      <div class="seg" id="armSeg"></div>
+      <div class="budget" id="budget"></div>
+      <div style="margin-top:14px;"><button class="big toto" style="width:100%;" id="startBtn">Start charting</button></div>
+      <div class="msg" id="pfMsg"></div>
+    </div>
+  </div>
+
+  <!-- MATCH -->
+  <div id="match" class="hide">
+    <div class="board">
+      <div class="evt"><span id="evtL"></span><span id="evtR"></span></div>
+      <div class="srow" id="rowT"><span class="nm"><span class="dot"></span>TOTO</span><span class="n" id="tSets">0</span><span class="n" id="tGms">0</span><span class="pts" id="tPts">0</span></div>
+      <div class="srow" id="rowO" style="margin-top:5px;"><span class="nm"><span class="dot"></span><span id="oNm">OPP</span></span><span class="n" id="oSets">0</span><span class="n" id="oGms">0</span><span class="pts" id="oPts">0</span></div>
+    </div>
+    <div class="kpi">
+      <div class="big"><b id="kEarn">–</b><span>Earned</span></div>
+      <div><b id="kGift">–</b><span>Gift</span></div>
+      <div><b id="kOwn">–</b><span>Own</span></div>
+      <div><b id="kN">0</b><span>Points</span></div>
+    </div>
+    <div class="mini">
+      <div id="pG12">G1-2 –</div>
+      <div id="p2nd">2nd serves 0/8</div>
+      <div id="pDF">DF 0</div>
+    </div>
+    <div id="endBanner" class="end hide"></div>
+    <div class="ask" id="ask"></div>
+    <div id="btns" class="grid"></div>
+    <div id="chips" class="chips"></div>
+    <div id="noteRow" class="row hide"><input class="t" id="noteIn" placeholder="note for last point"><button id="noteSave">Save</button></div>
+    <div id="flagRow" class="row hide"><button id="flagDrop">DROP last</button><button id="flagFlip">FLIP? last</button><button id="flagClose">close</button></div>
+    <label class="l">Live backup (screenshot if the page dies)</label>
+    <textarea id="backup" rows="5" readonly></textarea>
+  </div>
+
+  <!-- EXPORT -->
+  <div id="export" class="hide">
+    <div class="card">
+      <h2>Match data</h2>
+      <p>Post-match tags can still be edited here. Download, or long-press the box to select all.</p>
+      <div id="postSegs"></div>
+      <div style="height:10px;"></div>
+      <button class="big" style="width:100%;" id="dlBtn">Download CSV</button>
+      <div class="msg" id="dlMsg"></div>
+      <textarea id="csvBox" rows="12" readonly></textarea>
+      <div style="height:10px;"></div>
+      <button class="big small" style="width:100%;" id="backBtn">Back to match</button>
+    </div>
+  </div>
+</div>
+
+<div class="foot hide" id="foot">
+  <div class="tool">
+    <button id="bUndo">Undo</button>
+    <button id="bNote">Note</button>
+    <button id="bFlag">Flag</button>
+    <button id="bSD">SD</button>
+    <button id="bExport">Export</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* =======================================================================
+   CharterCore -- pure state machine. No DOM. Everything testable.
+   ======================================================================= */
+var CharterCore = (function () {
+  var VERSION = "match_chart_v3";
+  var CALL = ["0", "15", "30", "40"];
+  var V12_COLS = ["Pt#", "Set", "GameScore", "Server", "Side", "1stServe", "2ndServe",
+    "ServeDir", "RallyLen", "PointWon", "HowEnded", "EndWing", "TotoAtNet", "Notes",
+    "ScoreBeforePt", "Pressure", "DROP_ad_artefact", "FLAG"];
+  var V3_COLS = ["ApproachStride", "MissDir", "ShotDir", "RunAround", "StepIn",
+    "LowPaceBall", "Ball2Wing"];
+  var COLS = V12_COLS.concat(V3_COLS);
+  // Per-match tap-cost estimates for EVENT chips (folded fields cost 0).
+  // lowpace/runaround are unmeasured estimates; b2 is measured (16.1/match).
+  // V3.2 (D): mods is an ESTIMATE (~3/match); v12's 3 rows in 364 points is a floor.
+  var CHIP_COST = { lowpace: 2, runaround: 4, b2: 16, mods: 3 };
+  var ARM_KEYS = ["dfdir", "uedir", "earneddir", "stepin", "stride", "lowpace", "runaround", "b2", "mods"];
+  // V3.2 (D): v12's EndWing modifier suffixes, in canonical order.
+  var MODS = [["SL", "last pt · slice"], ["DR", "last pt · drop"], ["LB", "last pt · lob"]];
+  var MOD_WINGS = ["FH", "BH", "V"];
+  function baseWing(w) { return String(w || "").split("-")[0]; }
+  function modsOf(w) { return String(w || "").split("-").slice(1); }
+
+  function other(x) { return x === "T" ? "O" : "T"; }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+
+  function defaultCfg() {
+    return {
+      opponent: "", utr: "", utr_reliability: "", utr_basis: "unrated",
+      archetype: "unknown", presentation: "unknown", narrative: "name_only",
+      seed: "na", restring_date: "", strings: "", event: "",
+      competition_class: "hkcta_club", match_sequence_in_day: "1",
+      set_len: 6, sets_to_win: 1, no_ad: false, tb_at: 6, tb_to: 7,
+      final_set: "full", first_server: "T", date: "",
+      armed: { dfdir: true, uedir: true, earneddir: true, stepin: true, stride: true,
+               lowpace: true, runaround: true, b2: false, mods: true }
+    };
+  }
+
+  function tapBudget(armed) {
+    var n = 0;
+    for (var k in CHIP_COST) if (armed[k]) n += CHIP_COST[k];
+    return n;
+  }
+
+  function freshPend() { return { stage: "serve1" }; }
+  function freshChips() { return { net: false, stride: null, lowpace: false, runaround: false, b2: null }; }
+
+  function newMatch(pre) {
+    var cfg = defaultCfg();
+    pre = pre || {};
+    for (var k in pre) if (k !== "armed") cfg[k] = pre[k];
+    if (pre.armed) for (var a in pre.armed) cfg.armed[a] = !!pre.armed[a];
+    cfg.set_len = +cfg.set_len; cfg.sets_to_win = +cfg.sets_to_win;
+    cfg.tb_at = +cfg.tb_at || cfg.set_len; cfg.tb_to = +cfg.tb_to || 7;
+    cfg.no_ad = (cfg.no_ad === true || cfg.no_ad === "true" || cfg.no_ad === 1);
+    return {
+      cfg: cfg, points: [], hist: [], sdToggles: [], locked: false, modIdx: null,
+      pend: freshPend(), chips: freshChips(),
+      sb: { set: 1, g: { T: 0, O: 0 }, sets: { T: 0, O: 0 }, p: { T: 0, O: 0 },
+            server: cfg.first_server, inTB: false, isSTB: false, tbTarget: cfg.tb_to,
+            tbCount: 0, tbFirst: null, over: false, setScores: [], gamesDone: 0,
+            gamesT: 0, gamesO: 0, noAd: cfg.no_ad }
+    };
+  }
+
+  // ---------- undo: one tap back, always ----------
+  function snap(st) {
+    return JSON.stringify({ points: st.points, sb: st.sb, pend: st.pend, chips: st.chips,
+                            sdToggles: st.sdToggles, locked: st.locked, modIdx: st.modIdx });
+  }
+  function push(st) { st.hist.push(snap(st)); if (st.hist.length > 3000) st.hist.shift(); }
+  function undo(st) {
+    if (!st.hist.length) { st.pend = freshPend(); return false; }
+    var s = JSON.parse(st.hist.pop());
+    st.points = s.points; st.sb = s.sb; st.pend = s.pend; st.chips = s.chips;
+    st.sdToggles = s.sdToggles; st.locked = s.locked;
+    st.modIdx = s.modIdx == null ? null : s.modIdx;
+    return true;
+  }
+
+  // ---------- score engine ----------
+  function sideOf(sb) { return ((sb.p.T + sb.p.O) % 2 === 0) ? "D" : "A"; }
+  function scoreBefore(sb) {
+    var s = sb.server, a = sb.p[s], b = sb.p[other(s)];
+    if (sb.inTB) return "TB " + a + "-" + b;
+    if (a >= 3 && b >= 3) { if (a === b) return "40-40"; return a > b ? "AD-40" : "40-AD"; }
+    return CALL[a] + "-" + CALL[b];
+  }
+  // v12 tags, byte-compatible with charter_adapter.parse_pressure.
+  function pressureTag(sb) {
+    if (sb.inTB) return sb.isSTB ? "SUPER TB" : "TIEBREAK";
+    var s = sb.server, sv = sb.p[s], rt = sb.p[other(s)];
+    if (sv >= 3 && rt >= 3 && sv === rt) return sb.noAd ? "SD DECIDER" : "DEUCE";
+    if (rt >= 3 && rt > sv) return s === "T" ? "BREAK PT vs TOTO" : "BREAK PT for TOTO";
+    if (sv >= 3 && sv > rt) return "GAME PT · " + (s === "T" ? "TOTO" : "OPP") + " serving";
+    return "";
+  }
+  function startTB(sb, target, isSTB) {
+    sb.inTB = true; sb.isSTB = !!isSTB; sb.tbTarget = target; sb.tbCount = 0;
+    sb.tbFirst = sb.server; sb.p = { T: 0, O: 0 };
+  }
+  function endSet(sb, cfg, w) {
+    var wasTB = sb.inTB, wasSTB = sb.isSTB;
+    sb.sets[w]++;
+    sb.setScores.push(wasSTB ? ("[" + sb.p.T + "-" + sb.p.O + "]") : (sb.g.T + "-" + sb.g.O));
+    if (wasTB) sb.server = other(sb.tbFirst);   // receiver of TB point 1 serves next set
+    sb.p = { T: 0, O: 0 }; sb.g = { T: 0, O: 0 };
+    sb.inTB = false; sb.isSTB = false; sb.tbCount = 0;
+    if (sb.sets[w] >= cfg.sets_to_win) { sb.over = true; return; }
+    sb.set++;
+    if (cfg.final_set === "stb10" && sb.sets.T === cfg.sets_to_win - 1 &&
+        sb.sets.O === cfg.sets_to_win - 1) startTB(sb, 10, true);
+  }
+  function creditGame(sb, w) { sb.gamesDone++; if (w === "T") sb.gamesT++; else sb.gamesO++; }
+  function award(sb, cfg, w) {
+    if (sb.inTB) {
+      sb.p[w]++; sb.tbCount++;
+      if (sb.tbCount % 2 === 1) sb.server = other(sb.server);  // after pt 1, then every 2
+      var a = sb.p[w], b = sb.p[other(w)];
+      if (a >= sb.tbTarget && a - b >= 2) {
+        creditGame(sb, w);
+        if (!sb.isSTB) sb.g[w]++;
+        endSet(sb, cfg, w);
+      }
+      return;
+    }
+    sb.p[w]++;
+    var pa = sb.p[w], pb = sb.p[other(w)];
+    var won = sb.noAd ? (pa >= 4) : (pa >= 4 && pa - pb >= 2);
+    if (!won) return;
+    sb.g[w]++; creditGame(sb, w);
+    sb.p = { T: 0, O: 0 }; sb.server = other(sb.server);
+    var A = sb.g[w], B = sb.g[other(w)];
+    if (A >= cfg.set_len && A - B >= 2) { endSet(sb, cfg, w); return; }
+    if (sb.g.T === cfg.tb_at && sb.g.O === cfg.tb_at) startTB(sb, cfg.tb_to, false);
+  }
+
+  // ---------- the point state machine ----------
+  function B(id, label, cls, sub) { return { id: id, label: label, cls: cls || "", sub: sub || "" }; }
+  // REVIEW-3.1: who made the shot that ended the point. Winner -> the winner; error -> the loser.
+  function enderOf(p) { return (p.end === "W") ? p.won : (p.won === "T" ? "O" : "T"); }
+  function actions(st) {
+    var sb = st.sb, p = st.pend, a = st.cfg.armed, T = sb.server === "T";
+    if (sb.over) return [];
+    if (p.stage === "serve1")
+      return [B("ACE", "ACE", "toto"), B("IN1", "1st IN"), B("FAULT", "FAULT", "fault")];
+    if (p.stage === "serve2") {
+      var L = [B("IN2", "2nd IN")];
+      if (T && a.dfdir) L.push(B("DF_NET", "DF · net", "df"), B("DF_LONG", "DF · long", "df"),
+                               B("DF_WIDE", "DF · wide", "df"), B("DF_UNSEEN", "DF · direction unseen", "small"));
+      else L.push(B("DF", "DOUBLE FAULT", "df"));
+      return L;
+    }
+    if (p.stage === "rally") {
+      if (!T && p.s1 === "F" && a.stepin && !p.rallyPlain)
+        return [B("R1_IN", "0–4", "", "stepped in"), B("R2_IN", "5–8", "", "stepped in"),
+                B("R3_IN", "9+", "", "stepped in"), B("R1_BACK", "0–4", "ghostish", "stayed back"),
+                B("R2_BACK", "5–8", "ghostish", "stayed back"), B("R3_BACK", "9+", "ghostish", "stayed back"),
+                B("R_UNSEEN", "return position unseen", "small")];
+      return [B("R1", "0–4", "", "shots incl. serve"), B("R2", "5–8"), B("R3", "9+")];
+    }
+    if (p.stage === "outcome")
+      return [B("T_W", "WINNER", "toto", "Toto won"), B("T_FE", "FORCED", "toto", "they were forced"),
+              B("T_GIFT", "THEIR MISS", "toto", "they had time"),
+              B("O_W", "WINNER", "opp", "opp won"), B("O_FE", "FORCED", "opp", "Toto was forced"),
+              B("O_UE", "TOTO MISS", "opp", "Toto had time")];
+    if (p.stage === "wing") {
+      // REVIEW-3.1 (A): RETURN is only a valid wing when the ending shot belonged to the RECEIVER.
+      var tail = (p.rl === 1 && enderOf(p) !== sb.server) ? [B("W_RT", "RETURN")] : [];
+      if (!p.wingPlain && p.out === "earned" && a.earneddir)
+        return [B("W_FH_CC", "FH · cross"), B("W_FH_DTL", "FH · line"),
+                B("W_BH_CC", "BH · cross"), B("W_BH_DTL", "BH · line"),
+                B("W_V", "VOLLEY"), B("W_OH", "OVERHEAD")].concat(tail,
+               [B("W_UNSEEN", "direction unseen", "small")]);
+      if (!p.wingPlain && p.out === "totoue" && a.uedir)
+        return [B("W_FH_NET", "FH · net"), B("W_BH_NET", "BH · net"),
+                B("W_FH_LONG", "FH · long"), B("W_BH_LONG", "BH · long"),
+                B("W_FH_WIDE", "FH · wide"), B("W_BH_WIDE", "BH · wide"),
+                B("W_V", "VOLLEY"), B("W_OH", "OVERHEAD")].concat(tail,
+               [B("W_UNSEEN", "direction unseen", "small")]);
+      return [B("W_FH", "FOREHAND"), B("W_BH", "BACKHAND"), B("W_V", "VOLLEY"), B("W_OH", "OVERHEAD")].concat(tail);
+    }
+    return [];
+  }
+  function askText(st) {
+    var sb = st.sb, p = st.pend;
+    if (sb.over) return "";
+    var who = sb.server === "T" ? "Toto" : "Opp";
+    // REVIEW-3.1 (B): the wing prompt names whose shot ended the point.
+    var wingAsk = (p.stage === "wing") ? (enderOf(p) === "T" ? "Toto's wing" : "Their wing") : "";
+    return ({ serve1: who + " serving · " + (sideOf(sb) === "D" ? "deuce" : "ad") + " court",
+              serve2: "Second serve", rally: "Rally length", outcome: "How did it end?",
+              wing: wingAsk })[p.stage] || "";
+  }
+
+  var OUT = { T_W: ["T", "W", "earned"], T_FE: ["T", "FE", "earned"], T_GIFT: ["T", "UE", "gift"],
+              O_W: ["O", "W", "passed"], O_FE: ["O", "FE", "totofe"], O_UE: ["O", "UE", "totoue"] };
+  var WING = { W_FH: ["FH"], W_BH: ["BH"], W_V: ["V"], W_OH: ["OH"], W_RT: ["RT"],
+    W_FH_CC: ["FH", null, "CC"], W_FH_DTL: ["FH", null, "DTL"], W_BH_CC: ["BH", null, "CC"], W_BH_DTL: ["BH", null, "DTL"],
+    W_FH_NET: ["FH", "NET"], W_FH_LONG: ["FH", "LONG"], W_FH_WIDE: ["FH", "WIDE"],
+    W_BH_NET: ["BH", "NET"], W_BH_LONG: ["BH", "LONG"], W_BH_WIDE: ["BH", "WIDE"] };
+
+  function tap(st, id) {
+    var ok = actions(st).some(function (b) { return b.id === id; });
+    if (!ok) throw new Error("action " + id + " not available at stage " + st.pend.stage);
+    var sb = st.sb, p = st.pend;
+    push(st);
+    st.modIdx = null;   // V3.2 (D): the next point's first tap closes the modifier row
+    if (id === "ACE") return commit(st, { s1: "In", s2: "", rl: 1, won: sb.server, end: "A", wing: "SV" });
+    if (id === "IN1") { p.s1 = "In"; p.s2 = ""; p.stage = "rally"; return; }
+    if (id === "FAULT") { p.s1 = "F"; p.stage = "serve2"; return; }
+    if (id === "IN2") { p.s2 = "In"; p.stage = "rally"; return; }
+    if (id.indexOf("DF") === 0) {
+      var miss = { DF_NET: "NET", DF_LONG: "LONG", DF_WIDE: "WIDE" }[id] || "";
+      return commit(st, { s1: "F", s2: "DF", rl: 1, won: other(sb.server), end: "DF", wing: "SV", miss: miss });
+    }
+    if (id === "R_UNSEEN") { p.rallyPlain = true; return; }
+    if (id.charAt(0) === "R" && id.length >= 2 && "123".indexOf(id.charAt(1)) >= 0) {
+      p.rl = +id.charAt(1);
+      p.stepin = id.indexOf("_IN") > 0 ? "in" : (id.indexOf("_BACK") > 0 ? "back" : "");
+      p.stage = "outcome"; return;
+    }
+    if (OUT[id]) { p.won = OUT[id][0]; p.end = OUT[id][1]; p.out = OUT[id][2]; p.stage = "wing"; return; }
+    if (id === "W_UNSEEN") { p.wingPlain = true; return; }
+    if (WING[id]) {
+      var w = WING[id];
+      return commit(st, { s1: p.s1, s2: p.s2, rl: p.rl, won: p.won, end: p.end, wing: w[0],
+                          miss: w[1] || "", dir: w[2] || "", stepin: p.stepin || "" });
+    }
+    throw new Error("unhandled action " + id);
+  }
+
+  function chips(st) {
+    var a = st.cfg.armed, c = st.chips, L = [];
+    // V3.2 (D): modifier row for the point just committed -- offered after match point too.
+    if (st.modIdx != null && a.mods && st.points[st.modIdx]) {
+      var on = modsOf(st.points[st.modIdx].EndWing);
+      MODS.forEach(function (m) { L.push(B("MOD_" + m[0], m[1], on.indexOf(m[0]) >= 0 ? "on" : "")); });
+    }
+    if (st.sb.over) return L;
+    if (a.stride) L.push(B("CHIP_NET", "NET", c.net && c.stride === null ? "on" : ""),
+                         B("CHIP_NET_STRIDE", "NET · stride", c.stride === "in_stride" ? "on" : ""),
+                         B("CHIP_NET_STOPPED", "NET · stopped", c.stride === "stopped" ? "on" : ""));
+    else L.push(B("CHIP_NET", "NET", c.net ? "on" : ""));
+    if (a.lowpace) L.push(B("CHIP_LOWPACE", "LOW PACE", c.lowpace ? "on" : ""));
+    if (a.runaround) L.push(B("CHIP_RA", "RAN AROUND", c.runaround ? "on" : ""));
+    if (a.b2 && st.sb.server === "T")
+      L.push(B("CHIP_B2_FH", "ball 2 FH", c.b2 === "FH" ? "on" : ""), B("CHIP_B2_BH", "ball 2 BH", c.b2 === "BH" ? "on" : ""));
+    return L;
+  }
+  function chip(st, id) {
+    var ok = chips(st).some(function (b) { return b.id === id; });
+    if (!ok) throw new Error("chip " + id + " not available");
+    push(st);
+    var c = st.chips;
+    if (id.indexOf("MOD_") === 0) {   // V3.2 (D): toggle one suffix on the last point's EndWing
+      var row = st.points[st.modIdx], m = id.slice(4), cur = modsOf(row.EndWing);
+      var nxt = cur.indexOf(m) >= 0 ? cur.filter(function (x) { return x !== m; }) : cur.concat([m]);
+      row.EndWing = [baseWing(row.EndWing)].concat(MODS.map(function (x) { return x[0]; })
+        .filter(function (x) { return nxt.indexOf(x) >= 0; })).join("-");
+      return;
+    }
+    if (id === "CHIP_NET") { if (c.net && c.stride === null) c.net = false; else { c.net = true; c.stride = null; } }
+    else if (id === "CHIP_NET_STRIDE") { if (c.stride === "in_stride") { c.net = false; c.stride = null; } else { c.net = true; c.stride = "in_stride"; } }
+    else if (id === "CHIP_NET_STOPPED") { if (c.stride === "stopped") { c.net = false; c.stride = null; } else { c.net = true; c.stride = "stopped"; } }
+    else if (id === "CHIP_LOWPACE") c.lowpace = !c.lowpace;
+    else if (id === "CHIP_RA") c.runaround = !c.runaround;
+    else if (id === "CHIP_B2_FH") c.b2 = c.b2 === "FH" ? null : "FH";
+    else if (id === "CHIP_B2_BH") c.b2 = c.b2 === "BH" ? null : "BH";
+  }
+
+  function commit(st, f) {
+    var sb = st.sb, s = sb.server, c = st.chips;
+    var row = {
+      "Pt#": st.points.length + 1, "Set": sb.set,
+      "GameScore": sb.g[s] + "-" + sb.g[other(s)], "Server": s, "Side": sideOf(sb),
+      "1stServe": f.s1, "2ndServe": f.s2 || "", "ServeDir": "", "RallyLen": f.rl,
+      "PointWon": f.won, "HowEnded": f.end, "EndWing": f.wing,
+      "TotoAtNet": c.net ? "Y" : "", "Notes": "", "ScoreBeforePt": scoreBefore(sb),
+      "Pressure": pressureTag(sb), "DROP_ad_artefact": "", "FLAG": "",
+      "ApproachStride": (c.net && c.stride) ? c.stride : "",
+      "MissDir": f.miss || "", "ShotDir": f.dir || "",
+      "RunAround": c.runaround ? "Y" : "", "StepIn": f.stepin || "",
+      "LowPaceBall": c.lowpace ? "Y" : "", "Ball2Wing": c.b2 || "",
+      _g: sb.gamesDone + 1
+    };
+    st.points.push(row);
+    award(sb, st.cfg, f.won);
+    st.pend = freshPend(); st.chips = freshChips(); st.locked = true;
+    // V3.2 (D): open the modifier row when the ending shot was Toto's FH / BH / volley.
+    var totoShot = (f.won === "T" && (f.end === "W" || f.end === "FE")) ||
+                   (f.won === "O" && (f.end === "UE" || f.end === "FE"));
+    st.modIdx = (st.cfg.armed.mods && totoShot && MOD_WINGS.indexOf(f.wing) >= 0)
+      ? st.points.length - 1 : null;
+    return row;
+  }
+
+  // ---------- meta actions (all undoable) ----------
+  function toggleSD(st) {
+    push(st);
+    st.sb.noAd = !st.sb.noAd;
+    st.sdToggles.push({ at: st.points.length + 1, noAd: st.sb.noAd });
+  }
+  function flagLast(st, kind) {
+    var last = st.points[st.points.length - 1];
+    if (!last) return false;
+    push(st);
+    if (kind === "drop") last.DROP_ad_artefact = last.DROP_ad_artefact ? "" : "DROP";
+    if (kind === "flip") last.FLAG = last.FLAG ? "" : "RESULT_FLIP_CANDIDATE";
+    return true;
+  }
+  function noteLast(st, text) {
+    var last = st.points[st.points.length - 1];
+    if (!last) return false;
+    push(st);
+    last.Notes = String(text || "");
+    return true;
+  }
+
+  // ---------- derived displays ----------
+  // REVIEW-3.1 (C): registered KPI convention. Earned = own winners/aces + errors he FORCED
+  // (a forced return error is serve damage and counts). An UNFORCED return miss is a gift /
+  // an own error like any other UE; the wing does not change its class.
+  function classify(r) {
+    if (r.PointWon === "T") {
+      if (r.HowEnded === "A" || r.HowEnded === "W" || r.HowEnded === "FE") return "earned";
+      return "gift";
+    }
+    if (r.HowEnded === "UE" || r.HowEnded === "DF") return "own";
+    return "taken";
+  }
+  function stats(st) {
+    var live = st.points.filter(function (r) { return !r.DROP_ad_artefact; });
+    var n = live.length, k = { earned: 0, gift: 0, own: 0, taken: 0 };
+    live.forEach(function (r) { k[classify(r)]++; });
+    var g12 = live.filter(function (r) { return r._g <= 2; });
+    var sec = live.filter(function (r) { return r.Server === "T" && r["1stServe"] === "F"; });
+    var dfs = live.filter(function (r) { return r.Server === "T" && r.HowEnded === "DF"; });
+    var dirs = { NET: 0, LONG: 0, WIDE: 0, unseen: 0 };
+    dfs.forEach(function (r) { dirs[r.MissDir || "unseen"]++; });
+    return {
+      n: n, earned: n ? k.earned / n : null, gift: n ? k.gift / n : null, own: n ? k.own / n : null,
+      counts: k,
+      g12: { n: g12.length, won: g12.filter(function (r) { return r.PointWon === "T"; }).length,
+             net: g12.filter(function (r) { return r.TotoAtNet === "Y"; }).length },
+      second: sec.length, secondQualifies: sec.length >= 8,
+      df: dfs.length, dfDirs: dirs
+    };
+  }
+
+  // ---------- export ----------
+  function esc(v) { return (v == null ? "" : String(v)).replace(/[\r\n]+/g, " ").replace(/,/g, ";"); }
+  function fv(v) { return (v == null ? "" : String(v)).replace(/[\r\n]+/g, " ").replace(/=/g, ":").replace(/,/g, ";").trim(); }
+  function resultToken(st) {
+    var sb = st.sb;
+    if (!sb.over) return "incomplete_" + sb.gamesT + "-" + sb.gamesO;
+    return (sb.sets.T > sb.sets.O ? "W" : "L") + " " + sb.gamesT + "-" + sb.gamesO;
+  }
+  function footer(st) {
+    var c = st.cfg, s = stats(st), arm = ARM_KEYS.filter(function (k) { return c.armed[k]; });
+    var kv = [
+      ["opponent", c.opponent || "OPP"], ["utr", c.utr || "UR"], ["utr_reliability", c.utr_reliability],
+      ["utr_basis", c.utr_basis], ["opponent_archetype", c.archetype],
+      ["opponent_presentation", c.presentation], ["narrative_exposure", c.narrative],
+      ["seed_position", c.seed], ["restring_date", c.restring_date], ["strings", c.strings],
+      ["format", c.event || "MATCH"], ["competition_class", c.competition_class],
+      ["set_len", c.set_len], ["sets_to_win", c.sets_to_win], ["no_ad", c.no_ad ? 1 : 0],
+      ["tb_at", c.tb_at + "-" + c.tb_at], ["tb_to", c.tb_to], ["final_set", c.final_set],
+      ["date", c.date], ["first_server", c.first_server],
+      ["match_sequence_in_day", c.match_sequence_in_day],
+      ["result", resultToken(st)], ["set_scores", st.sb.setScores.join(";")],
+      ["charter_version", VERSION + ".2"], ["chips_armed", arm.join(";")],
+      ["sd_toggled_at_point", st.sdToggles.map(function (t) { return t.at + ":" + (t.noAd ? 1 : 0); }).join(";")],
+      ["g12_points", s.g12.won + "/" + s.g12.n], ["g12_approaches", s.g12.net],
+      ["toto_second_serves", s.second],
+      ["toto_df_dirs", "NET:" + s.dfDirs.NET + ";LONG:" + s.dfDirs.LONG + ";WIDE:" + s.dfDirs.WIDE + ";unseen:" + s.dfDirs.unseen]
+    ];
+    return "# " + kv.filter(function (x) { return fv(x[1]) !== ""; })
+                   .map(function (x) { return x[0] + "=" + fv(x[1]); }).join(" ");
+  }
+  // display=true is the ON-SCREEN form (live backup box): Pressure values are
+  // blanked so nothing readable as a pressure label is ever rendered. No
+  // information is lost -- the loader derives pressure from ScoreBeforePt
+  // (canonical) and a match tiebreak from GameScore 0-0; this column is only
+  // a fallback when the score is unparseable. The EXPORT is always complete.
+  function csv(st, display) {
+    var rows = st.points.map(function (r) {
+      return COLS.map(function (k) { return (display && k === "Pressure") ? "" : esc(r[k]); }).join(",");
+    });
+    return [COLS.join(",")].concat(rows, [footer(st)]).join("\n");
+  }
+  function restore(json) {
+    var o = JSON.parse(json), st = newMatch(o.cfg);
+    st.points = o.points; st.sb = o.sb; st.pend = o.pend; st.chips = o.chips;
+    st.sdToggles = o.sdToggles || []; st.locked = !!o.locked; st.hist = [];
+    st.modIdx = o.modIdx == null ? null : o.modIdx;
+    return st;
+  }
+  function save(st) {
+    return JSON.stringify({ cfg: st.cfg, points: st.points, sb: st.sb, pend: st.pend,
+                            chips: st.chips, sdToggles: st.sdToggles, locked: st.locked,
+                            modIdx: st.modIdx });
+  }
+
+  return { VERSION: VERSION, COLS: COLS, V12_COLS: V12_COLS, V3_COLS: V3_COLS, ARM_KEYS: ARM_KEYS,
+           CHIP_COST: CHIP_COST, defaultCfg: defaultCfg, tapBudget: tapBudget, newMatch: newMatch,
+           actions: actions, chips: chips, tap: tap, chip: chip, undo: undo, askText: askText,
+           toggleSD: toggleSD, flagLast: flagLast, noteLast: noteLast, stats: stats,
+           classify: classify, csv: csv, footer: footer, save: save, restore: restore,
+           scoreBefore: scoreBefore, pressureTag: pressureTag, clone: clone, enderOf: enderOf };
+})();
+
+/* =======================================================================
+   CharterUI -- thin rendering layer over CharterCore.
+   ======================================================================= */
+var CharterUI = (function () {
+  var C = CharterCore, st = null, pre = C.defaultCfg(), noteOpen = false, flagOpen = false;
+  var KEY = "toto_charter_v3_live";
+  function $(id) { return document.getElementById(id); }
+  function mk(tag, cls, html, fn) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (fn) e.onclick = fn;
+    return e;
+  }
+  function show(id) {
+    ["preflight", "match", "export"].forEach(function (x) { $(x).classList.toggle("hide", x !== id); });
+    $("foot").classList.toggle("hide", id !== "match");
+  }
+  function pct(x) { return x == null ? "–" : Math.round(100 * x) + "%"; }
+  function store() { try { if (st) localStorage.setItem(KEY, C.save(st)); } catch (e) {} }
+
+  var SEGS = [
+    ["utr_basis", "UTR basis", [["confirmed", "Confirmed"], ["estimated", "Estimated"], ["unrated", "Unrated"]]],
+    ["archetype", "Archetype", [["aggressive_baseliner", "Hitter"], ["pusher_retriever", "Pusher"], ["allcourt", "All-court"], ["net_rusher", "Net-rusher"], ["serve_dominant", "Big server"], ["unknown", "Unknown"]]],
+    ["presentation", "How they present", [["stronger", "Stronger"], ["level", "Level"], ["weaker", "Weaker"], ["unknown", "Unknown"]]],
+    ["narrative", "What Toto was told", [["name_only", "Name only"], ["rating", "Rating"], ["reputation", "Reputation"], ["other", "Other"], ["none", "Nothing"]]],
+    ["seed", "Draw position", [["top", "Top"], ["mid", "Mid"], ["low", "Low"], ["na", "n/a"]]],
+    ["competition_class", "Class", [["hkcta_club", "Interclub"], ["hkcta_points", "HKCTA"], ["utr", "UTR"], ["practice", "Practice"]]],
+    ["set_len", "Set to", [[4, "4"], [6, "6"], [8, "8"]]],
+    ["sets_to_win", "Sets to win", [[1, "1"], [2, "2"]]],
+    ["tb_to", "Tiebreak to", [[5, "5"], [7, "7"], [10, "10"]]],
+    ["final_set", "Deciding set", [["full", "Full set"], ["stb10", "Match TB"]]],
+    ["no_ad", "Scoring", [[false, "Ad"], [true, "No-ad (SD)"]]],
+    ["first_server", "Serves first", [["T", "Toto"], ["O", "Opponent"]]]
+  ];
+  var POST = ["presentation", "narrative"];
+  var ARM_LABEL = { dfdir: "DF direction", uedir: "Miss direction", earneddir: "Shot direction",
+    stepin: "Step-in", stride: "Net stride", lowpace: "Low pace", runaround: "Ran around", b2: "Ball 2 wing",
+    mods: "Slice/drop/lob" };
+
+  function segBlock(host, key, label, opts, target) {
+    host.appendChild(mk("label", "l", label));
+    var box = mk("div", "seg");
+    opts.forEach(function (o) {
+      var b = mk("button", String(target[key]) === String(o[0]) ? "on" : "", o[1], function () {
+        target[key] = o[0];
+        if (key === "set_len") { target.tb_at = o[0]; $("inTbAt").value = String(o[0]); }
+        if (st && target === st.cfg) store();
+        renderPre(); if (st) renderExport();
+      });
+      box.appendChild(b);
+    });
+    host.appendChild(box);
+  }
+  function renderPre() {
+    var host = $("segs"); host.innerHTML = "";
+    SEGS.forEach(function (s) { segBlock(host, s[0], s[1], s[2], pre); });
+    var arm = $("armSeg"); arm.innerHTML = "";
+    C.ARM_KEYS.forEach(function (k) {
+      arm.appendChild(mk("button", pre.armed[k] ? "on" : "", ARM_LABEL[k], function () {
+        pre.armed[k] = !pre.armed[k]; renderPre();
+      }));
+    });
+    var n = C.tapBudget(pre.armed);
+    $("budget").textContent = "Folded fields cost 0 taps. Event chips ≈ " + n +
+      " extra taps/match (budget 25)" + (n > 25 ? " — OVER BUDGET" : "");
+  }
+  function readInputs() {
+    pre.opponent = ($("inOpp").value || "").trim();
+    pre.utr = ($("inUtr").value || "").trim();
+    pre.utr_reliability = ($("inRel").value || "").trim();
+    pre.tb_at = +($("inTbAt").value || pre.set_len);
+    pre.event = ($("inEvent").value || "").trim();
+    pre.match_sequence_in_day = ($("inSeq").value || "1").trim();
+    pre.date = ($("inDate").value || "").trim();
+    pre.restring_date = ($("inRestring").value || "").trim();
+    pre.strings = ($("inStrings").value || "").trim();
+  }
+  function start() {
+    readInputs();
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(pre.date)) { $("pfMsg").textContent = "Date must be YYYY-MM-DD."; return; }
+    st = C.newMatch(C.clone(pre));
+    begin();
+  }
+  function begin() {
+    $("oNm").textContent = (st.cfg.opponent || "OPP").toUpperCase().slice(0, 10);
+    $("evtL").textContent = st.cfg.event || "MATCH";
+    show("match"); render();
+  }
+  function act(id) { C.tap(st, id); after(); }
+  function chipAct(id) { C.chip(st, id); after(); }
+  function after() { store(); render(); }
+
+  function render() {
+    if (!st) return;
+    var sb = st.sb, s = C.stats(st);
+    $("evtR").textContent = sb.inTB ? (sb.isSTB ? "Match TB" : "Tiebreak") : ("Set " + sb.set);
+    $("rowT").classList.toggle("srv", sb.server === "T" && !sb.over);
+    $("rowO").classList.toggle("srv", sb.server === "O" && !sb.over);
+    $("tSets").textContent = sb.sets.T; $("oSets").textContent = sb.sets.O;
+    $("tGms").textContent = sb.g.T; $("oGms").textContent = sb.g.O;
+    var sc = C.scoreBefore(sb), pT, pO;
+    if (sb.inTB) { pT = sb.p.T; pO = sb.p.O; }
+    else {
+      var parts = sc.split("-"), me = sb.server === "T";
+      pT = me ? parts[0] : parts[1]; pO = me ? parts[1] : parts[0];
+    }
+    $("tPts").textContent = pT; $("oPts").textContent = pO;
+    // NB: pressure state is deliberately NOT rendered anywhere.
+    $("kEarn").textContent = pct(s.earned); $("kGift").textContent = pct(s.gift);
+    $("kOwn").textContent = pct(s.own); $("kN").textContent = s.n;
+    $("pG12").textContent = "G1-2 " + (s.g12.n ? s.g12.won + "/" + s.g12.n + " · net " + s.g12.net : "–");
+    $("p2nd").textContent = "2nd serves " + s.second + (s.secondQualifies ? " ✓" : "/8");
+    $("p2nd").className = s.secondQualifies ? "ok" : "";
+    $("pDF").textContent = "DF " + s.df + (s.df ? " · N" + s.dfDirs.NET + " L" + s.dfDirs.LONG + " W" + s.dfDirs.WIDE : "");
+    var banner = $("endBanner"), wrap = $("btns");
+    wrap.innerHTML = "";
+    if (sb.over) {
+      banner.classList.remove("hide");
+      banner.textContent = "Match over (" + sb.setScores.join(", ") + "). Export the data.";
+      $("ask").textContent = "";
+    } else {
+      banner.classList.add("hide");
+      $("ask").textContent = C.askText(st);
+      var list = C.actions(st);
+      wrap.className = "grid" + ((st.pend.stage === "serve1" || (st.pend.stage === "rally" && list.length === 3) ||
+                                  st.pend.stage === "outcome") ? " g3" : "");
+      list.forEach(function (b) {
+        wrap.appendChild(mk("button", "big " + b.cls, b.label + (b.sub ? "<small>" + b.sub + "</small>" : ""),
+                            function () { act(b.id); }));
+      });
+    }
+    var ch = $("chips"); ch.innerHTML = "";
+    C.chips(st).forEach(function (b) { ch.appendChild(mk("button", b.cls, b.label, function () { chipAct(b.id); })); });
+    $("bSD").classList.toggle("on", !!sb.noAd);
+    $("noteRow").classList.toggle("hide", !noteOpen);
+    $("flagRow").classList.toggle("hide", !flagOpen);
+    $("backup").value = C.csv(st, true);   // pressure-blanked display form
+  }
+  function renderExport() {
+    var host = $("postSegs"); host.innerHTML = "";
+    SEGS.filter(function (s) { return POST.indexOf(s[0]) >= 0; })
+        .forEach(function (s) { segBlock(host, s[0], s[1] + " (post-match edit)", s[2], st.cfg); });
+    $("csvBox").value = C.csv(st);
+  }
+  function openExport() { renderExport(); show("export"); }
+  function download() {
+    try {
+      var blob = new Blob([C.csv(st)], { type: "text/csv" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "toto_match_" + (st.cfg.date || "undated") + ".csv";
+      document.body.appendChild(a); a.click(); a.remove();
+      $("dlMsg").textContent = "";
+    } catch (e) { $("dlMsg").textContent = "Download blocked here — long-press the box and copy."; }
+  }
+
+  function wire() {
+    $("startBtn").onclick = start;
+    $("resumeBtn").onclick = function () {
+      try { st = C.restore(localStorage.getItem(KEY)); begin(); } catch (e) { $("pfMsg").textContent = "Saved match unreadable."; }
+    };
+    $("bUndo").onclick = function () { C.undo(st); after(); };
+    $("bNote").onclick = function () { noteOpen = !noteOpen; flagOpen = false; render(); };
+    $("noteSave").onclick = function () { C.noteLast(st, $("noteIn").value); $("noteIn").value = ""; noteOpen = false; after(); };
+    $("bFlag").onclick = function () { flagOpen = !flagOpen; noteOpen = false; render(); };
+    $("flagDrop").onclick = function () { C.flagLast(st, "drop"); flagOpen = false; after(); };
+    $("flagFlip").onclick = function () { C.flagLast(st, "flip"); flagOpen = false; after(); };
+    $("flagClose").onclick = function () { flagOpen = false; render(); };
+    $("bSD").onclick = function () { C.toggleSD(st); after(); };
+    $("bExport").onclick = openExport;
+    $("backBtn").onclick = function () { show("match"); render(); };
+    $("dlBtn").onclick = download;
+  }
+  function boot() {
+    var d = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
+    $("inDate").value = d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate());
+    $("inTbAt").value = String(pre.tb_at);
+    wire(); renderPre(); show("preflight");
+    try { if (localStorage.getItem(KEY)) $("resumeWrap").classList.remove("hide"); } catch (e) {}
+    try { if (navigator.wakeLock) navigator.wakeLock.request("screen").catch(function () {}); } catch (e) {}
+  }
+  return { boot: boot, render: render, start: start, act: act, chipAct: chipAct,
+           state: function () { return st; }, setPre: function (k, v) { pre[k] = v; },
+           pre: function () { return pre; }, openExport: openExport, download: download };
+})();
+
+if (typeof window !== "undefined") { window.CharterCore = CharterCore; window.CharterUI = CharterUI; }
+if (typeof document !== "undefined" && document.getElementById) CharterUI.boot();
+</script>
+</body>
+</html>
